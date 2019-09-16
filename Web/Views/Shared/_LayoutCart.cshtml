@@ -1,0 +1,92 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <link rel="shortcut icon" href="/Content/asset/img/logomini.png">
+    <title>Đèn led trang trí, đèn led đồ chơi,led trái tim, quà tặng bạn gái, quà tặng người yêu</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/jumbotron/">
+
+    <link rel="stylesheet" href="~/Content/asset/font-awesome/css/font-awesome.css">
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/asset/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="~/Content/asset/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/asset/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="~/Content/asset/css/style.css" rel="stylesheet">
+    <script src="~/Content/asset/js/jquery.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140300834-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-140300834-1');
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="qua-tang-svn">
+            <div class="header">
+                <div class="logo">
+                    <div class="md-hidden col-xs-4" id="clickmenu">
+                        <i class="fa fa-align-justify" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-xs-4 col-sm-3">
+                        @{ Html.RenderAction("Logo", "Home");}
+                    </div>
+                    <div class="xs-hidden col-sm-9 ">
+                        <div class="banner-svn">
+                            <img src="~/Content/asset/img/banner.png" />
+                        </div>
+                        <div class="r_header">
+                           @{Html.RenderAction("Header", "Header");}
+                            <div class="cart">
+                                <a  href="/gio-hang.html">
+                                    <span class="cart-title"><span class="count" id="coutCart"></span></span>
+                                    <p>Xem giỏ hàng</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md-hidden col-xs-4">
+                        <div class="cart">
+                            <a href="/gio-hang.html">
+                                <span class="cart-title"><span class="count">0</span></span>
+                                <p>Xem giỏ hàng</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @{ Html.RenderAction("MenuHome", "Home");}
+            </div>
+            @RenderBody()
+            <div class="">
+                <footer class="container"></footer>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-svn">
+        <footer class="container">
+            @{ Html.RenderAction("LoadFooter", "Footer");}
+        </footer>
+    </div>
+    <script src="~/Content/asset/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/asset/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('#clickmenu').click(function(){
+         $('#menuhome').slideToggle();
+      });
+        });
+        function loadfrmCart() {
+            window.location.href = "/gio-hang.html";
+        }
+    </script>
+</body>
+</html>

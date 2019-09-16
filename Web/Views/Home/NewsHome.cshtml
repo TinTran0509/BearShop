@@ -1,0 +1,25 @@
+﻿@model List<Web.Model.News>
+@using Web.Core
+@{ 
+    var dothtml = ".html";
+}
+<div class="panel-heading">
+    <div class="panel-title">
+        TIN TỨC MỚI
+    </div>
+</div>
+<div class="panel-body">
+    @foreach (var item in Model)
+    {
+        <div class="item-post-svn">
+            <a href="/chi-tiet-tin-tuc/@item.ID/@HelperString.RenderLinkSeo(item.MetaTitle)@dothtml">
+                <div class="image-svn">
+                    <img class="img-responsive" src="@item.Image" alt="h.anh">
+                </div>
+                <div class="title-svn">
+                    <h3>@item.MetaTitle</h3>
+                </div>
+            </a>
+        </div>
+    }
+</div>

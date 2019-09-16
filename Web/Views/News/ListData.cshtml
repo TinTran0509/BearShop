@@ -1,0 +1,31 @@
+﻿@model List<Web.Model.CustomModel.ListNews>
+    @{ 
+        var dothtml = ".html";
+    }
+@using Web.Core
+@foreach (var item in Model)
+{
+    string description = item.Desciption;
+    if (description.Length > 160)
+    {
+        description = description.Substring(0, 90) + "...";
+    }
+    <div class="item-new col-xs-12">
+        <div class="image">
+            <a href="/chi-tiet-tin-tuc/@item.ID/@HelperString.RenderLinkSeo(item.MetaTitle)@dothtml">
+                <img src="@item.Image" alt="@item.MetaTitle">
+            </a>
+        </div>
+        <div class="description">
+            <a href="/chi-tiet-tin-tuc/@item.ID/@HelperString.RenderLinkSeo(item.MetaTitle)@dothtml">
+                <h3>@item.MetaTitle</h3>
+            </a>
+            <time>@string.Format("{0:dd/MM/yyyy HH:mm}", item.CreatedDate)</time>
+            <p class="mota">
+                 @description
+            </p>
+        </div>
+    </div>
+}
+
+  

@@ -1,0 +1,74 @@
+﻿@model Web.Model.Header
+     <link href="~/Content/asset/css/style.css" rel="stylesheet">
+<div class="text_center_header">
+    
+    @if (HttpContext.Current.Session["id"] == null)
+         {
+            <div class="social" id="">
+                <ul>
+                 <li class="facebook">
+                 <a href="/dang-nhap.html" title="Đăng nhập">
+                    <i class="fa fa-sign-in"></i>
+                </a>
+             </li>
+                <li class="facebook">
+                     <a href="#" title="Đăng Ký">
+                          <i class="glyphicon glyphicon-registration-mark"></i>
+                      </a>
+             </li>
+            </ul>
+    </div>
+
+    }
+    else
+    {
+            <div class="social d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <ul class="navbar-nav ml-auto ml-md-0">
+
+                    <li class="nav-item dropdown no-arrow">
+
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-circle fa-fw"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="userDropdown">
+
+
+                            <a class="dropdown-item profile" id="profile" data-id="@Session["id"]" href="trang-ca-nhan.html"><i class=""></i>Trang cá nhân</a>
+
+                            @*@Html.Raw(MyUtil.MyUtilMethod(item.ID))*@
+                            @*<a class="dropdown-item" href="@Url.Action("EditPassword", "User", new { id = Session["id"] })">Edit password</a>*@
+
+                            <div class="dropdown-divider"></div>
+
+                            <a class="dropdown-item profile" id="profile" datao-id="@Session["id"]" href="thoat.html"><i class=""></i>Thoát</a>
+
+
+
+                        </div>
+
+
+                    </li>
+
+                </ul>
+            </div>
+
+    }
+    <div style="margin-right:80px" class="social" id="Social">
+
+    </div>
+    <div class="hotline_number" id="HotLine">
+
+    </div>
+</div>
+@if (Model != null)
+{
+    <input type="hidden" id="headerContent" value="@Model.Contents" />
+}
+<script>
+    let headerContent = $('#headerContent').val();
+    var lstdata = JSON.parse(headerContent);
+    for (var i = 0; i < lstdata.length; i++) {
+        $("#" + lstdata[i].Key).html(lstdata[i].Value);
+    }
+</script>

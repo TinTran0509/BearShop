@@ -1,0 +1,162 @@
+﻿
+<link rel="stylesheet" href="/Content/Admin/assets/colorpicker/css/colorpicker.css" type="text/css" />
+<script type="text/javascript" src="/Content/Admin/assets/colorpicker/js/colorpicker.js"></script>
+<script src="/Content/Admin/assets/ckfinder/ckfinder.js"></script>
+@using Web.Model
+@model UserAdmin
+@{
+    var lstPageElements = (List<tbl_PageElement>)TempData["PageElement"];
+    var lstGroupUser = (List<tbl_GroupUser>)TempData["lstGroupUser"];
+    var arrPageElementsChecked = new List<int>();
+    if (Model.PageElementID != null)
+    {
+        arrPageElementsChecked = Model.PageElementID.Split(',').Select(int.Parse).ToList();
+    }
+}
+@using (Ajax.BeginForm("Edit", "Account", null,
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "account.onEditSuccess"
+    },
+    new { @id = "basicForm", @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(g => g.ID)
+    @Html.HiddenFor(g => g.UserType)
+    @Html.HiddenFor(g => g.PageElementID)
+    <div class="form-group">
+        <label class="col-md-2 control-label">Tên đăng nhập</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(g => g.UserName, new { @class = "form-control ", placeholder = "Tên danh mục", @readonly = true })
+        </div>
+    </div>
+    @Html.HiddenFor(g => g.Password)
+    <div class="form-group">
+        <label class="col-md-2 control-label">Email</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(g => g.Email, new { @class = "form-control ", placeholder = "Email", @readonly = true })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Họ và tên</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(g => g.FullName, new { @class = "form-control", placeholder = "Họ và tên" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Nhóm người dùng</label>
+        <div class="col-md-10">
+            @Html.DropDownListFor(x => x.GroupUserID, new SelectList(lstGroupUser, "ID", "Name"), "-- Chọn Nhóm --", new { @class = "form-control" })
+        </div>
+    </div>
+    @*<div class="form-group">
+        <label class="col-md-2 control-label">Loại người dùng</label>
+        <div class="col-md-10">
+            @Html.DropDownListFor(x => x.UserType, new SelectList(new List<Object>{
+                new { value = 1 , text = "Quản trị" },
+                new { value = 2 , text = "Cán bộ"},
+            },
+                "value",
+                "text",
+                0), "Chọn loại người dùng", new { @class = "form-control" })
+        </div>
+    </div>*@
+    @*<div class="form-group">
+        <label class="col-md-2 control-label">Được quản lý trang</label>
+        <div class="col-md-10 input-group-btn dropup">
+            <button type="button" class="btn waves-effect waves-light dropdown-toggle" data-toggle="dropdown" style="overflow: hidden; position: relative;" aria-expanded="true">Chọn trang <span class="caret"></span></button>
+            <ul class="dropdown-menu" style="margin-left: 10px;max-height: 300px;overflow: scroll;">
+                <li>
+                    <a href="javascript:void(0)">
+                        <div class="checkbox checkbox-primary">
+                            <input id="chkall" type="checkbox">
+                            <label for="chkall">
+                                Chọn tất
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li class="divider"></li>
+                @foreach (var item in lstPageElements)
+                {
+                    <li class="chkelement" onclick="$('.dropup').addClass('open')">
+                        <a href="javascript:void(0)">
+                            <div class="checkbox checkbox-primary">
+                                <input id="chk_@item.ID" name="arrPageElementId" @(arrPageElementsChecked.Contains(item.ID) ? "checked" : "") type="checkbox" value="@item.ID">
+                                <label for="chk_@item.ID">
+                                    @item.Name
+                                </label>
+                            </div>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>*@
+  
+    <div class="form-group">
+        <div class="col-sm-10 pull-right">
+            <div class="checkbox checkbox-primary">
+                <input id="isAdmin" name="isAdmin" type="checkbox" value="true" @(Model.isAdmin ? "checked" : "")>
+                <label for="isAdmin">
+                    Quản trị tối cao
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-10 pull-right">
+            <div class="checkbox checkbox-primary">
+                <input id="Active" name="Active" type="checkbox" value="true" @(Model.Active ? "checked" : "")>
+                <label for="Active">
+                    Kích hoạt
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10 pull-right pl0">
+        <button type="submit" class="btn btn-primary waves-effect waves-light">Cập nhật</button>
+    </div>
+}
+<script>
+    // Basic Form
+    $(document).ready(function () {
+        $("#basicForm").validate({
+            rules:
+        {
+            UserName:
+            {
+                required: true
+            },
+            Password:
+            {
+                required: true,
+                minlength: 6,
+            },
+            Email:
+            {
+                email: true,
+                required: true
+            }
+        },
+            messages:
+            {
+                Name:
+                {
+                    required: "Chưa nhập tên đăng nhập"
+                },
+                Password:
+                {
+                    required: "Chưa nhập mật khẩu",
+                    minlength: "Mật khẩu tối thiểu 6 ký tự"
+                },
+                Ordering:
+               {
+                   email: "Email không đúng định dạng",
+                   required: "Chưa nhập email"
+               }
+            }
+        });
+        account.initcheckall();
+    });
+</script>

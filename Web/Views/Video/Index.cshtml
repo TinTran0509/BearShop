@@ -1,0 +1,89 @@
+﻿@{
+    TempData["PathName"] = "Video sản phẩm";
+    Layout = "~/Views/Shared/_Layout2.cshtml"; 
+}
+<style>
+    #imgvideo:hover {
+        content: url('/Upload/Images/playvideo.jpg');
+    }
+</style>
+<link href="/Content/Admin/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
+<link href="/Content/Admin/assets/fancybox/source/helpers/jquery.fancybox-buttons.css" rel="stylesheet" />
+<link href="/Content/Admin/assets/fancybox/source/helpers/jquery.fancybox-thumbs.css" rel="stylesheet" />
+<script src="/Content/Admin/assets/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+<script src="/Content/Admin/assets/fancybox/source/jquery.fancybox.js"></script>
+<script src="/Content/Admin/assets/fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
+<script src="/Content/Admin/assets/fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
+<script src="/Content/Admin/assets/fancybox/source/helpers/jquery.fancybox-media.js"></script>
+<script src="~/AppJs/videoHome.js"></script>
+@model List<Web.Model.Video>
+<div class="col-xs-12 col-md-9 col-sm-9" id="product_list">
+    <div class="san-pham-svn">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">Video sản phẩm</div>
+            </div>
+            <div class="panel-body" id="gridData">
+                <div class="row port">
+                    <div class="portfolioContainer" style="position: relative; height: 792px;">
+                        @{
+                            var i = 0;
+                            string domainName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+                            string domain = domainName.Split(new string[] { "//" }, StringSplitOptions.None)[1];
+                        }
+                        @foreach (var item in Model)
+                        {
+                            string urlVideo = "http://" + domain + item.Url;
+                            string urlImg = "http://" + domain + item.Images;
+                            if (i % 4 == 0)
+                            {
+                                <div class="row"></div>
+                            }
+                            i++;
+                            if (!item.Url.Contains("https"))
+                            {
+                                item.Url = "https://" + item.Url;
+                            }
+                            <div class="col-md-4 pull-left">
+                                <div class="gal-detail thumb">
+                                    <a class="fancybox" href="#boxvideo-@item.ID" title="Xem video" style="text-decoration: none;">
+                                        <div>
+                                            @if (item.Type == 1)
+                                            {
+                                                <img id="imgyoutube" src="@(item.Images??"Content/Site/images/noimage.png")" width="240" height="180" />
+                                            }
+                                            else
+                                            {
+                                                <img id="imgvideo" src="@(item.Images??"Content/Site/images/noimage.png")" width="240" height="180" />
+                                            }
+                                        </div>
+                                        <p style="margin-top: 0; height: 35px; overflow: hidden;"><b>@item.Name</b></p>
+                                    </a>
+                                    <div id="boxvideo-@item.ID" style="display: none;width: 100%;height: 100%;">
+                                        @if (item.Type == 1)
+                                        {
+                                            var urlyoutube = new Uri(item.Url);
+                                            var idyoutube = HttpUtility.ParseQueryString(urlyoutube.Query).Get("v");
+                                            <iframe width="640" height="480" src="https://www.youtube.com/embed/@idyoutube" frameborder="0" allowfullscreen></iframe>
+                                        }
+                                        else
+                                        {
+                                            <video width="640" height="480" controls><source src="@urlVideo" type="video/mp4"></video>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+<script>
+    $(document).ready(function () {
+        $(".fancybox").fancybox({
+            closeBtn: true
+        });
+    });
+</script>

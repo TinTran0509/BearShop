@@ -1,0 +1,70 @@
+/*
+Theme Name: Flatsome Child
+Description: This is a child theme for Flatsome Theme
+Author: UX Themes
+Template: flatsome
+Version: 3.0
+*/
+
+/*************** ADD CUSTOM CSS HERE.   ***************/
+a#top-link {
+	bottom: 30%;
+}
+/* font chu */
+@font-face {
+    font-family: 'bocapden';
+    src: url('fonts/Comfortaa-Regular.ttf');
+
+}
+@font-face {
+    font-family: 'bocapdenb';
+    src: url('fonts/Comfortaa-Bold.ttf');
+}
+body{
+	font-family:  "bocapden",  sans-serif !important;
+	font-style: normal;
+}
+.nav > li > a {
+	font-family:  "bocapdenb", sans-serif !important;
+}
+h1,h2,h3,h4,h5,h6, .heading-font{
+	font-family: "bocapdenb", sans-serif !important;
+}
+/* End font */
+.page-inner li {
+    margin-left: 35px;
+}
+.footer-1 li a {
+    font-size: 13px;
+}
+p.no-margin {
+    font-size: 14px;
+}
+
+span.amount {
+    color: red;
+}
+.product-categories ul.children {
+    display: block;
+}
+.single_add_to_cart_button {
+    padding: 3px 1.2em 0 1.2em;
+    font-size: 14px;
+}
+.share-icons i[class^="icon-"] {
+	padding-top: 4px;
+}
+@media screen and (min-width: 850px) {
+	.related .product-small .box-image img {
+		min-height: 195px !important;
+	}
+	.product-small .box-image img {
+		min-height: 348px;
+	}
+
+}
+@media only screen and (max-width: 48em) {
+/*************** ADD MOBILE ONLY CSS HERE  ***************/
+
+
+}

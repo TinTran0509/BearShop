@@ -1,0 +1,21 @@
+﻿@model Web.Model.Video
+<div class="panel-heading">
+    <div class="panel-title">
+        Video sản phẩm
+    </div>
+</div>
+<div class="panel-body">
+    @if (Model != null)
+    {
+        if (Model.Type == 1)
+        {
+            var urlyoutube = new Uri(Model.Url);
+            var idyoutube = HttpUtility.ParseQueryString(urlyoutube.Query).Get("v");
+            <iframe width="100%" height="230" src="https://www.youtube.com/embed/@idyoutube" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        }
+        else
+        {
+            <video width="100%" height="230" controls><source src="@Model.Url" type="video/mp4"></video>
+        }
+    }
+</div>

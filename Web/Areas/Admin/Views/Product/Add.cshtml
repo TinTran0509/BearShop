@@ -1,0 +1,175 @@
+﻿@using Web.Model
+@model Product
+@{
+    ViewBag.Title = "Thêm mới sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var error = ViewBag.Error;
+    var category = (List<Category>)TempData["Category"];
+}
+<script src="~/AppJs/product.js"></script>
+<p style="color:red">Chú ý các trường có dấu (*) là yêu cầu bắt buộc</p>
+@using (Ajax.BeginForm("Add", "Product", null,
+                                        new AjaxOptions
+                                        {
+                                            HttpMethod = "POST",
+                                            OnSuccess = "Product.onAddSuccess"
+                                        }, new { id = "frmData", @class = "form-horizontal" }))
+{
+    <input type="hidden" name="isContinue" id="isContinue" value="" />
+    <div class="form-group">
+        <label class="control-label col-md-2">Danh mục<span class="asterisk"> (*)</span></label>
+        <div class="col-md-4">
+            @Html.DropDownList("CategoryId", new SelectList(category, "ID", "Name"), "--- Chọn danh mục ---", new { @class = "form-control select2" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Tên sản phẩm<span class="asterisk"> (*)</span></label>
+        <div class="col-md-6">
+           @Html.TextBoxFor(x => x.Name, new { @class = "form-control",@placeholder ="Nhập tên sản phẩm" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Mã sản phẩm<span class="asterisk"> (*)</span></label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(x => x.ProductCode, new { @class = "form-control",@oninput= "getCode(this.value)", @onkeyup= "Product.checkCode(this.value)", @placeholder = "Nhập mã sản phẩm" })
+        </div>
+        <span class="error" id="product_code"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Hình ảnh <span class="asterisk"> (*)</span></label>
+        <div class="col-md-9">
+            <div class="col-md-2">
+                @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Images"});}
+            </div>
+            <img  src="" id="prevImages">
+            <span class="error" id="spImg"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Gía bán</label>
+        <div class="col-md-4 lockChar">
+            <input type="text" id="price_add" class="form-control" />
+            @Html.HiddenFor(model => model.Price)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Gía khuyến mãi</label>
+        <div class="col-md-4 lockChar">
+            <input type="text" id="sale_add" class="form-control" />
+            @Html.HiddenFor(model => model.Sale)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-10 pull-right">
+            <div class="checkbox checkbox-primary">
+                <input id="IsHot" name="IsHot" type="checkbox"  value="">
+                <label for="IsHot">
+                    Là sản phẩm bán chạy
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Mô tả<span class="asterisk"> (*)</span></label>
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Description, new { rows = "20", style = "resize:none;width:400px;", @class = "form-control input-lg textarea-editor" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a href="/Admin/Product" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
+            <button onclick="checkAdd('close')" id="btnsaveadd" type="submit" class="btn btn-primary">Lưu và đóng</button>
+            <button onclick="checkAdd('continue')" id="btnsavecontinue" type="submit"  class="btn btn-primary">Lưu và thêm tiếp</button>
+        </div>
+    </div>
+  }
+<input type="hidden" id="acctionadd" value="1" />
+<script>
+    function getCode(code) {
+        let value = RemoveProductCode(code);
+        $('#ProductCode').val(value);
+    }
+    $(document).ready(function () {
+        $('.lockChar').on("keypress", function () {
+            return event.charCode >= 48 && event.charCode <= 57
+        })
+        $("#frmData").validate({
+            rules:
+            {
+                Name:
+                {
+                    required: true,
+                    maxlength: 250
+                },
+                ProductCode:
+                {
+                    required: true,
+                    maxlength: 50
+                } 
+            },
+            messages:
+            {  
+                Name:
+                {
+                    required: "Vui lòng nhập tên sản phẩm"
+                },
+                ProductCode:
+                {
+                    required: "Vui lòng nhập mã sản phẩm"
+                }
+            },
+            highlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                $(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+        $('#fileUpload').on('change', function () {
+            $('#spImg').text("");
+        })
+     
+        var price_add = $('#price_add'); 
+        let price = '#Price';
+        price_add.keyup(function () {
+            let num = price_add.val();
+            let comma = /,/g;
+            num = num.replace(comma, ''); 
+            let numCommas = addCommas(num);
+            let numNew = numCommas.replace(/\,/g, '');
+             price_add.val(numCommas);
+            $(price).val(numNew);
+        });
+        var sale_add = $('#sale_add');
+        let sale = '#Sale';
+        sale_add.keyup(function () {
+            let num = sale_add.val();
+            let comma = /,/g;
+            num = num.replace(comma, '');
+            let numCommas = addCommas(num);
+            let numNew = numCommas.replace(/\,/g, '');
+            sale_add.val(numCommas);
+            $(sale).val(numNew);
+        });
+    })
+    function addCommas(nStr) {
+        nStr += '';
+        var comma = /,/g;
+        nStr = nStr.replace(comma, '');
+        x = nStr.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        return x1 + x2;
+    }
+    function checkAdd(state) {
+        $('#isContinue').val(state);
+    }
+</script>
+
+

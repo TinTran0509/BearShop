@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+    string dothtml = ".html";
+}
+@model List<Web.Model.HomeMenu>
+<div id="wide-nav" class="header-bottom wide-nav nav-dark flex-has-center hide-for-medium">
+    <div class="flex-row container">
+        <div class="flex-col hide-for-medium flex-center">
+            <ul class="nav header-nav header-bottom-nav nav-center nav-size-medium nav-spacing-xlarge nav-uppercase">
+                @if (Model != null && Model.Count > 0)
+                {
+                    var lstParent = Model.Where(g => g.ParentId == 0).OrderBy(g => g.Ordering).ToList();
+                    foreach (var level1 in lstParent)
+                    {
+                        var level2 = Model.Where(g => g.ParentId == level1.ID).ToList();
+                        if (level2.Count > 0)
+                        {
+                            <li id="menu-item-23" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-23 has-dropdown">
+                                @if (!string.IsNullOrEmpty(level1.Link))
+                                {
+                                    <a href="@level1.LinkSeo@dothtml" class="nav-top-link">@level1.Name<i class="icon-angle-down"></i></a>
+                                }
+                                else
+                                {
+                                    <a href="#" class="nav-top-link">@level1.Name<i class="icon-angle-down"></i></a>
+                                }
+                                <ul class='nav-dropdown nav-dropdown-default'>
+                                    @foreach (var item in level2)
+                                    {
+                                        <li id="menu-item-29" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-29">
+                                            <a href="@item.LinkSeo@dothtml">@item.Name</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-30 current_page_item active menu-item-32">
+                                <a href="@level1.Link@dothtml" class="nav-top-link">@level1.Name</a>
+                            </li>
+                        }
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+

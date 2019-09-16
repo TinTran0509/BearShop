@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+@model List<Web.Model.Product>
+<span class="widget-title "><span>Top gấu bán chạy</span></span><div class="is-divider small"></div>
+<ul class="product_list_widget">
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="../san-pham/gau-bong-teddy-ponder-ao-len-08/index.html">
+                <img width="100" height="100" src="@item.Images" class="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail" alt="@item.Name" srcset="https://gausaigon.com/wp-content/uploads/2019/02/GU-BONG-TEDDY-PONDER-08-5-100x100.jpg 100w, https://gausaigon.com/wp-content/uploads/2019/02/GU-BONG-TEDDY-PONDER-08-5-150x150.jpg 150w" sizes="(max-width: 100px) 100vw, 100px" />
+                <span class="product-title">@item.Name</span>
+            </a>
+            @if (item.Price != null)
+            {
+                <span class="woocommerce-Price-amount amount">@String.Format("{0:0,0}", item.Price)&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
+            }
+        </li>
+    }
+    @*<li>
+        <a href="../san-pham/gau-bong-teddy-xoan-trang-len-xanh/index.html">
+            <img width="100" height="100" src="../wp-content/uploads/2019/02/gau-teddy-xoan-trang-len-xanh-1-2-100x100.jpg" class="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail" alt="gau-teddy-xoan-trang-len-xanh-1-2.jpg" srcset="https://gausaigon.com/wp-content/uploads/2019/02/gau-teddy-xoan-trang-len-xanh-1-2-100x100.jpg 100w, https://gausaigon.com/wp-content/uploads/2019/02/gau-teddy-xoan-trang-len-xanh-1-2-150x150.jpg 150w" sizes="(max-width: 100px) 100vw, 100px" />
+            <span class="product-title">Gấu bông Teddy xoắn trắng len xanh</span>
+        </a>
+        <span class="woocommerce-Price-amount amount">600,000&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
+    </li>
+    <li>
+        <a href="../san-pham/gau-bong-teddy-ponder-ao-len-mylove/index.html">
+            <img width="100" height="100" src="../wp-content/uploads/2019/02/GU-BONG-TEDDY-PONDER-ao-len-mylove-2-100x100.jpg" class="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail" alt="gau-bong-teddy-PONDER-ao-len-mylove-2.jpg" srcset="https://gausaigon.com/wp-content/uploads/2019/02/GU-BONG-TEDDY-PONDER-ao-len-mylove-2-100x100.jpg 100w, https://gausaigon.com/wp-content/uploads/2019/02/GU-BONG-TEDDY-PONDER-ao-len-mylove-2-150x150.jpg 150w" sizes="(max-width: 100px) 100vw, 100px" />
+            <span class="product-title">Gấu bông Teddy PONDER nâu áo len Mylove</span>
+        </a>
+    </li>
+    <li>
+        <a href="../san-pham/heo-bong-nhung-mem-min/index.html">
+            <img width="100" height="100" src="../wp-content/uploads/2019/02/heo-bong-nhung-mem-min-4-100x100.jpg" class="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail" alt="heo-bong-nhung-mem-min-4.jpg" srcset="https://gausaigon.com/wp-content/uploads/2019/02/heo-bong-nhung-mem-min-4-100x100.jpg 100w, https://gausaigon.com/wp-content/uploads/2019/02/heo-bong-nhung-mem-min-4-150x150.jpg 150w" sizes="(max-width: 100px) 100vw, 100px" />
+            <span class="product-title">Heo bông nhung mềm mịn</span>
+        </a>
+        <span class="woocommerce-Price-amount amount">250,000&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span></span> &ndash;
+        <span class="woocommerce-Price-amount amount">450,000&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
+    </li>
+    <li>
+        <a href="../san-pham/gau-bong-teddy-ponder-chocolate-ao-len-mylove/index.html">
+            <img width="100" height="100" src="../wp-content/uploads/2019/02/GU-BONG-TEDDY-PONDER-chocolate-ao-len-mylove-2-100x100.jpg" class="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail" alt="gau-bong-teddy-PONDER-chocolate-ao-len-mylove-2.jpg" srcset="https://gausaigon.com/wp-content/uploads/2019/02/GU-BONG-TEDDY-PONDER-chocolate-ao-len-mylove-2-100x100.jpg 100w, https://gausaigon.com/wp-content/uploads/2019/02/GU-BONG-TEDDY-PONDER-chocolate-ao-len-mylove-2-150x150.jpg 150w" sizes="(max-width: 100px) 100vw, 100px" />
+            <span class="product-title">Gấu bông Teddy PONDER chocolate áo len Mylove</span>
+        </a>
+    </li>*@
+</ul>
+

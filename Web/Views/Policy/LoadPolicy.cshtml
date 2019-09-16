@@ -1,0 +1,25 @@
+﻿@{
+    Layout = null;
+    string condot = ".html";
+}
+@model List<Web.Model.Policy>
+  <div class="textwidget custom-html-widget">
+    <div id="nav_menu-3" class="col pb-0 widget widget_nav_menu">
+        <span class="widget-title">CHÍNH SÁCH</span>
+        <div class="is-divider small"></div>
+        <div class="menu-f3-container">
+            <ul id="menu-f3" class="menu">
+            @foreach (var item in Model)
+            {
+                <li id="menu-item-538" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-538">
+                    <a href="/chinh-sach/@item.LinkSeo@condot">@item.MetaTitle</a>
+                </li>
+            }
+               
+            </ul>
+        </div>
+    </div>
+    <a href="http://online.gov.vn/HomePage/CustomWebsiteDisplay.aspx?DocId=41941" target="_blank" rel="noopener noreferrer">
+        <img onload="Wpfcll.r(this,true);" src="/Content/asset/wp-content/plugins/wp-fastest-cache-premium/pro/images/blank.gif" class="alignnone size-medium wp-image-728" data-wpfc-original-src="https://gausaigon.com/wp-content/uploads/2018/03/20150827110756-dathongbao-300x114.png" alt="" width="300" height="114" />
+    </a>
+</div>

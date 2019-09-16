@@ -1,0 +1,252 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutCart.cshtml";
+    int i = 0;
+    int t = 0;
+    var dothtml = ".html";
+}
+@using Web.Core
+@model List<Web.Model.CustomModel.CartItem>
+    <style>
+        .error_text {
+            color: red;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+    <div class="breadcrumb-svn">
+        <ul>
+            <li><a href="/">Trang chủ</a></li>
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+            <li class="active"><a href="/gio-hang.html">Giỏ hàng</a></li>
+        </ul>
+    </div>
+    <main role="main">
+        <div class="col-md-12 col-xs-12 col-sm-12" id="titleCart">
+            @if (Model.Count > 0)
+            {
+                <label for=""><h3>Giỏ hàng</h3></label>
+                <table class="table table-hover table-bordered table-striped table-responsive gio-hang-svn">
+                    <thead class="gio-hang-table">
+                        <tr>
+                            <th class="center">STT</th>
+                            <th>Ảnh</th>
+                            <th>Tên Sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Đơn giá</th>
+                            <th>Thành tiền</th>
+                            <th>Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody id="loadData">
+                        @foreach (var item in Model)
+                        {
+                            i++;
+                            <tr id="row_@i">
+                                <input type="hidden" id="productid_@i" value="@item.Product.ID" />
+                                <input type="hidden" id="img_@i" value="@item.Product.Images" />
+                                <input type="hidden" id="name_@i" value="@item.Product.Name" />
+                                <td class="center">@i</td>
+                                <td>
+                                    <img class="img-responsive img-product" src="@item.Product.Images" alt="h.anh">
+                                </td>
+                                <td><a href="/chi-tiet-san-pham/@item.Product.ID/@HelperString.RenderLinkSeo(item.Product.Name)@dothtml">@item.Product.Name </a></td>
+                                <td>
+                                    <input type="number" oninput="cart.changeQuantity(this.value,@item.Product.ID)" id="quantity_@item.Product.ID" value="@item.Quantity" min="1" max="100" class="sizeinput quantityProduct_@i">
+                                </td>
+                                <td>
+                                    @if (item.Product.Price == null && item.Product.Sale == null)
+                                    {
+                                        <input type="hidden" class="hdPrice_@i" id="hdPriceMoney_@item.Product.ID" value="@item.Product.Price.GetValueOrDefault(0)" />
+                                        <span id="priceMoney_@item.Product.ID">Liên hệ</span>
+                                    }
+                                    @if (item.Product.Price != null && item.Product.Sale == null)
+                                    {
+                                        <input type="hidden" class="hdPrice_@i" id="hdPriceMoney_@item.Product.ID" value="@item.Product.Price" />
+                                        <span id="priceMoney_@item.Product.ID">@String.Format("{0:0,0}", item.Product.Price)</span>
+                                    }
+                                    @if ((item.Product.Price == null && item.Product.Sale != null) || (item.Product.Price != null && item.Product.Sale != null))
+                                    {
+                                        <input type="hidden" class="hdPrice_@i" id="hdPriceMoney_@item.Product.ID" value="@item.Product.Sale" />
+                                        <span id="priceMoney_@item.Product.ID">@String.Format("{0:0,0}", item.Product.Sale)</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.Product.Price == null && item.Product.Sale == null)
+                                    {
+                                        <input class="total_price_money" id="hdTotalPriceMoney_@item.Product.ID" type="hidden" value="@(item.Product.Price.GetValueOrDefault(0) * item.Quantity)" />
+                                        <span id="totalPriceMoney_@item.Product.ID">@String.Format("{0:0,0}", (item.Product.Price.GetValueOrDefault(0) * item.Quantity))</span>
+                                    }
+                                    @if (item.Product.Price != null && item.Product.Sale == null)
+                                    {
+                                        <input class="total_price_money" id="hdTotalPriceMoney_@item.Product.ID" type="hidden" value="@(item.Product.Price * item.Quantity)" />
+                                        <span id="totalPriceMoney_@item.Product.ID">@String.Format("{0:0,0}", (item.Product.Price * item.Quantity))</span>
+                                    }
+                                    @if ((item.Product.Price == null && item.Product.Sale != null) || (item.Product.Price != null && item.Product.Sale != null))
+                                    {
+                                        <input class="total_price_money" id="hdTotalPriceMoney_@item.Product.ID" type="hidden" value="@(item.Product.Sale * item.Quantity)" />
+                                        <span id="totalPriceMoney_@item.Product.ID">@String.Format("{0:0,0}", (item.Product.Sale * item.Quantity))</span>
+                                    }
+                                </td>
+                                <td><a href="javascript:void(0)" onclick="cart.deleteProduct(@i)" title="Xóa"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+                            </tr>
+                        }
+                        <tr>
+                            <td colspan="5" style="text-align:center"><b>Tổng tiền</b></td>
+                            <td colspan="2"><b><span id="totalMoney"></span> VNĐ</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <label for=""><h3>Bạn chưa đặt mua sản phẩm nào</h3></label>
+            }
+
+            <!--  Phan hiện thị cho mobile -->
+            <div class="gio-hang-mobile">
+                @if (Model.Count > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        t++;
+                        <input type="hidden" id="productidMobile_@i" value="@item.Product.ID" />
+                        <tr>
+                            <td>STT: </td>
+                            <td>@t</td>
+                        </tr>
+                        <br>
+                        <tr>
+                            <td>Ảnh : </td>
+                            <td>
+                                <div style="width:50%">
+                                    <img class="img-responsive img-product" src="@item.Product.Images" />
+                                    <a style="float:right" href="javascript:void(0)" onclick="cart.deleteProduct(@i)" title="Xóa"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <br>
+                        <tr>
+                            <td>Tên sản phẩm :</td>
+                            <td><a href="/chi-tiet-san-pham/@item.Product.ID/@HelperString.RenderLinkSeo(item.Product.Name)@dothtml">@item.Product.Name</a></td>
+                        </tr>
+                        <br>
+                        <tr>
+                            <td>Số lượng :</td>
+                            <td>
+                                <input type="number" onblur="cart.blurQuantity(this.value,@item.Product.ID)" oninput="cart.changeQuantityMobile(this.value,@item.Product.ID)" id="quantityMobile_@item.Product.ID" value="@item.Quantity" min="1" max="100" class="sizeinput quantityMobile_@i">
+                            </td>
+                        </tr>
+                        <br>
+                        <tr>
+                            <td>Đơn giá : </td>
+                            <td>
+                                @if (item.Product.Price == null && item.Product.Sale == null)
+                                {
+                                    <input type="hidden" class="hdPriceMobile_@t" id="hdPriceMoneyMobile_@item.Product.ID" value="@item.Product.Price.GetValueOrDefault(0)" />
+                                    <span id="priceMoneyMobile_@item.Product.ID">Liên hệ</span>
+                                }
+                                @if (item.Product.Price != null && item.Product.Sale == null)
+                                {
+                                    <input type="hidden" class="hdPriceMobile_@t" id="hdPriceMoneyMobile_@item.Product.ID" value="@item.Product.Price" />
+                                    <span id="priceMoneyMobile_@item.Product.ID">@String.Format("{0:0,0}", item.Product.Price.GetValueOrDefault(0))</span>
+                                }
+                                @if ((item.Product.Price == null && item.Product.Sale != null) || (item.Product.Price != null && item.Product.Sale != null))
+                                {
+                                    <input type="hidden" class="hdPriceMobile_@t" id="hdPriceMoneyMobile_@item.Product.ID" value="@item.Product.Sale" />
+                                    <span id="priceMoneyMobile_@item.Product.ID">@String.Format("{0:0,0}", item.Product.Sale.GetValueOrDefault(0))</span>
+                                }
+
+                            </td>
+                        </tr>
+                        <br>
+                        <tr>
+                            <td>Thành tiền :</td>
+                            <td>
+                                @if (item.Product.Price == null && item.Product.Sale == null)
+                                {
+                                    <input class="thanhtienmobile" type="hidden" id="hdTotalPriceMoneyMobile_@item.Product.ID" value="@(item.Product.Price.GetValueOrDefault(0) * item.Quantity)" />
+                                    <span id="totalPriceMoneyMobile_@item.Product.ID">@String.Format("{0:0,0}", (item.Product.Price.GetValueOrDefault(0) * item.Quantity))</span>
+                                }
+                                @if (item.Product.Price != null && item.Product.Sale == null)
+                                {
+                                    <input class="thanhtienmobile" type="hidden" id="hdTotalPriceMoneyMobile_@item.Product.ID" value="@(item.Product.Price * item.Quantity)" />
+                                    <span id="totalPriceMoneyMobile_@item.Product.ID">@String.Format("{0:0,0}", (item.Product.Price * item.Quantity))</span>
+                                }
+                                @if ((item.Product.Price == null && item.Product.Sale != null) || (item.Product.Price != null && item.Product.Sale != null))
+                                {
+                                    <input class="thanhtienmobile" type="hidden" id="hdTotalPriceMoneyMobile_@item.Product.ID" value="@(item.Product.Sale * item.Quantity)" />
+                                    <span id="totalPriceMoneyMobile_@item.Product.ID">@String.Format("{0:0,0}", (item.Product.Sale * item.Quantity))</span>
+                                }
+
+                            </td>
+                        </tr>
+                        <br>
+                    }
+                    <label for=""><b>Tổng tiền : <span id="totalMoneyMobile"></span></b><b> VNĐ</b></label>
+                }
+                else
+                {
+                    <label for=""><b>Chưa có sản phẩm nào được đặt mua</b></label>
+                }
+            </div>
+        </div>
+        <div class="col-md-12 col-xs-12">
+            <a href="/trang-chu.html" class="btn btn-success">Tiếp tục mua hàng</a>
+            @if (Model.Count > 0)
+            {
+                <a href="javascript:void(0)" onclick="cart.cancelOrder()" class="btn btn-success">Hủy đơn hàng</a>
+            }
+        </div>
+        <div class="col-md-12 col-xs-12">
+            <label for=""><h3>Thông tin đặt hàng</h3></label>
+            <form action="" method="POST" role="form">
+                <legend>Nhập thông tin để tiến hành đặt hàng</legend>
+                <div class="col-md-6 col-xs-12">
+                    <div class="form-group">
+                        <label for="">Họ và tên <span class="asterisk">(*)</span></label>
+                        <input type="text" name="fullname" class="form-control" id="fullname" oninput="checkFullName(this.value)" placeholder="Họ và tên">
+                        <span class="error_text" id="errorFullName"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Địa chỉ <span class="asterisk">(*)</span></label>
+                        <input type="text" name="address" class="form-control" id="address" oninput="checkAddress(this.value)" placeholder="Địa chỉ :Số nhà, Thôn , Xã , Phường , Thị trấn , Tỉnh/TP">
+                        <span class="error_text" id="errorAddress"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Số điện thoại <span class="asterisk">(*)</span></label>
+                        <input type="text" name="phone" class="form-control lockChar" id="phone" oninput="checkPhone(this.value)" placeholder="Số diện thoại">
+                        <span class="error_text" id="errorPhone"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Email (nếu có)</label>
+                        <input type="text" name="gmail" class="form-control" onblur="validateEmail(this.value)" id="gmail" placeholder="Địa chỉ mail">
+                        <span id="email_error" class="error_text"></span>
+                    </div>
+                    <button type="button" onclick="cart.orderProduct(@i)" id="btnOrder" class="btn btn-success">Đặt hàng</button>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <span> <input type="checkbox" checked="checked" name="" value="1"> Thanh toán khi nhận hàng </span>
+                </div>
+            </form>
+        </div>
+    </main>
+    <script src="~/Content/asset/js/validatecart.js"></script>
+    @Scripts.Render("~/bundles/cart")
+    <script>
+    $(document).ready(function () {
+        var totalMoney = 0;
+        $(".total_price_money").each(function() {
+            let money = $(this).val();
+            totalMoney  += parseInt(money);
+        });
+        let numCommas = addCommas(totalMoney);
+        $('#totalMoney').text(numCommas);
+        $('#coutCart').text(@Model.Count);
+    })
+    </script>

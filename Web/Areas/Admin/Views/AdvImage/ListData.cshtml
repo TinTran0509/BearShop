@@ -1,0 +1,56 @@
+﻿@model List<Web.Model.AdvImag>
+<div class="col-xs-12">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Tiêu đề</th>
+                <th>Hình ảnh</th>
+                <th>Link</th>
+                <th>Vị trí</th>
+                <th>Thứ tự</th>
+                <th>Ngày tạo</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                string position = string.Empty;
+                switch (item.Position)
+                {
+                    case 1:
+                        position = "Ảnh Banner";
+                        break;
+                    case 2:
+                        position = "Video trên";
+                        break;
+                    case 3:
+                        position = "Video dưới";
+                        break;
+                    case 4:
+                        position = "Ảnh cuối trang";
+                        break;
+                    case 5:
+                        position = "Tin tức";
+                        break;
+                }
+                <tr>
+                    <td>@item.Title</td>
+                    <td><img style="width:50px" src="@item.Image" /></td>
+                    <td>@item.Link</td>
+                    <td>@position</td>
+                    <td>@item.DisplayOrder</td>
+                    <td>@string.Format("{0:dd/MM/yyyy HH:mm}", item.CreatedDate)</td>
+                    <td style="width:120px">
+                        <a href="javascript:void(0)" class="btn btn-primary btn-bordered" onclick="Adv_Image.handleEditItem(@item.ID)" title="Sửa">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="btn btn-danger btn-bordered" onclick="Adv_Image.handleDeleteItem(@item.ID) " title="Xóa">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Hình ảnh quảng cáo";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="~/AppJs/adv_image.js"></script>
+<div class="page-content-wrapper ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <h4 class="m-b-30 m-t-0">Danh sách ảnh quảng cáo</h4>
+                        <div class="row" style="margin-bottom:10px">
+                            <div class="col-md-4">
+                                
+                            </div>
+                            <div class="col-md-4">
+                                
+                            </div>
+                            <div class="col-md-4">
+                                <button style="float:right" onclick="Adv_Image.handleAddItem()" class="btn btn-primary">Thêm mới</button>
+                            </div>
+                        </div>
+                        <div id="loadData" class="row">
+                            <div class="col-xs-12">
+                                <table  class="table table-bordered">
+                                     
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div style=" width: 50%;margin: 0 auto;" id="paginationholder">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

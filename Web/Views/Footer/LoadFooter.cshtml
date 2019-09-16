@@ -1,0 +1,14 @@
+﻿@model Web.Model.Footer 
+    @{ 
+        Layout = null;
+    }
+<ul id="content-footer" class="address-list">
+   
+</ul>
+<input type="hidden" id="footerContent" value="@Model.Contents" />
+<script type="text/javascript">
+    let footerContent = document.getElementById('footerContent').value;
+    var data = JSON.parse(footerContent);
+    var eo = data[0].Value;
+    document.getElementById('content-footer').innerHTML = eo;
+</script>

@@ -1,0 +1,193 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    var lstProduct = ViewBag.RelatedProduct;
+    var dothtml = ".html";
+    var lstImg = (List<string>)ViewBag.ImageMore;
+}
+@using Web.Core
+@model Web.Model.Product
+<div class="col-xs-12 col-md-9 col-sm-9"  id="view_detail">
+    <div class="detail-product">
+        <div class="col-md-6">
+            <div class="home-detail">
+                <a href="@Model.Images" class="cloud-zoom" id="cloudZoom">
+                    <img src="@Model.Images" title="@Model.Name" class="img-responsive">
+                </a>
+            </div>
+            <style>
+                .flex-direction-nav{
+                    display:none;
+                }
+            </style>
+            @if (lstImg!=null && lstImg.Count > 0)
+            {
+                <div id="carousel" class="flexslider">
+                       <ul class="slides">
+                           @foreach (var item in lstImg)
+                           {
+                               <li class="photo_container">
+                                   <a href="@item" rel="gallerySwitchOnMouseOver: true, popupWin:'@item', useZoom: 'cloudZoom', smallImage: '@item'" class="cloud-zoom-gallery">
+                                       <img itemprop="image" src="@item" class="img-responsive">
+                                   </a>
+                               </li>
+                           }
+                           <li class="photo_container">
+                               <a href="@Model.Images" rel="gallerySwitchOnMouseOver: true, popupWin:'@Model.Images', useZoom: 'cloudZoom', smallImage: '@Model.Images'" class="cloud-zoom-gallery">
+                                   <img itemprop="image" src="@Model.Images" class="img-responsive">
+                               </a>
+                           </li>
+                       </ul>
+               </div>
+            }
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="summary entry-summary">
+                <h1 itemprop="name" class="heading_title product_title entry-title">@Model.Name</h1>
+                <div class="pricelist">
+                    <div class="price-product">
+                        @{
+                            if (Model.Price == null && Model.Sale == null)
+                            {
+                                <li class="number_price"> <span>Giá bán: </span>Liên hệ</li>
+                                <li><strike></strike></li>
+                            }
+                            if (Model.Price != null && Model.Sale == null)
+                            {
+                                <li class="number_price"> <span>Giá bán: </span>@String.Format("{0:0,0}", Model.Price).Replace(",", ".") VNĐ</li>
+                            }
+                            if (Model.Price == null && Model.Sale != null)
+                            {
+                                <li class="number_price"> <span>Giá bán: </span>@String.Format("{0:0,0}", Model.Sale).Replace(",", ".") VNĐ</li>
+                            }
+                            if (Model.Price != null && Model.Sale != null)
+                            {
+                                <li class="number_price"> <span>Giá bán: </span>@String.Format("{0:0,0}", Model.Sale).Replace(",", ".") VNĐ</li>
+                                <li><strike>Giá cũ: @String.Format("{0:0,0}", Model.Price).Replace(",", ".") VNĐ</strike></li>
+                            }
+                        }
+
+                    </div>
+                </div>
+                <div class="tinhtrang">
+                    <strong>Tình trạng:</strong><span> Còn hàng</span>
+                </div>
+                <div class="tag">
+                    <div class="title_km"><span>Tags</span></div>
+                </div>
+                <div class="price_addcart">
+                    <div class="add_cart_custom">
+                        <input type="number" name="quantity" oninput="changeQuantity(this.value)" id="quantity" min="1" value="1">
+                        <a href="javascript:void(0)" onclick="addToCart(@Model.ID)" id="6197" title="" class="button-red add-to-cart">Mua ngay</a>
+                    </div>
+                </div>
+                <div class="khuyenmai">
+                    <div class="title_km"><span>Dịch vụ đi kèm</span></div>
+                    <div class="content_khuyenmai">
+                        <p>Free ship toàn Quốc trên 10 cái</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-12 col-sm-12">
+            <div class="tab_product">
+                <div class="tabcontainer">
+                    <ul>
+                        <li class="diem1 active"><a alt="#tab1">Chi tiết sản phẩm</a></li>
+                    </ul>
+                </div>
+                <div class="tab_content_container">
+                    <div id="tab1" class="tab_content">
+                        <div class="content_tab1 content_detail">
+                            @Html.Raw(Model.Description)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="san-pham-lien-quan-svn">
+        <div class="tabcontainer">
+            <ul>
+                <li class="diem1 active"><a alt="#tab1">Sản phẩm liên quan</a></li>
+            </ul>
+        </div>
+        <div class="panel-body">
+            @foreach (var item in lstProduct)
+            {
+                <div class="col-md-4">
+                    <div class="item-svn">
+                        <div class="image-fix">
+                            <img class="img-responsive" src="@item.Images" alt="@item.Name">
+                        </div>
+                        <a href="/chi-tiet-san-pham/@item.ID/@HelperString.RenderLinkSeo(item.Name)@dothtml" title="@item.Name"><h2>@item.Name</h2></a>
+                        <span>Mã SP: @item.ProductCode</span>
+                        <div class="shopping">
+                            <a class="muangay" href="" title="Mua ngay">Mua ngay</a>
+                        </div>
+
+                        <div class="descrtion-svn">
+                            <div class="price-svn">
+                                @{
+                                    if (item.Price == null && item.Sale == null)
+                                    {
+                                        <span><strike></strike></span>
+                                        <br>
+                                        <span><strong class="price">Liên hệ</strong></span>
+                                    }
+                                    if (item.Price != null && item.Sale == null)
+                                    {
+                                        <span><strike></strike></span>
+                                        <br>
+                                        <span><strong class="price">@String.Format("{0:0,0}", item.Price).Replace(",", ".") đ</strong></span>
+                                    }
+                                    if (item.Price == null && item.Sale != null)
+                                    {
+                                        <span><strike></strike></span>
+                                        <br>
+                                        <span><strong class="price">Gía bán : @String.Format("{0:0,0}", item.Sale).Replace(",", ".") đ</strong></span>
+                                    }
+                                    if (item.Price != null && item.Sale != null)
+                                    {
+                                        <span><strike>Gía cũ :@String.Format("{0:0,0}", item.Price).Replace(",", ".") đ</strike></span>
+                                        <br>
+                                        <span><strong class="price">Gía bán : @String.Format("{0:0,0}", item.Sale).Replace(",", ".") đ</strong></span>
+                                    }
+                                }
+                                <a class="pull-right detail-svn" href="/chi-tiet-san-pham/@item.ID/@HelperString.RenderLinkSeo(item.Name)@dothtml" title="Chi tiết">Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                    }
+        </div>
+    </div>
+</div> 
+<input type="hidden" id="hdProductDetail" value="0" /> 
+<script type="text/javascript">
+     $(window).load(function () {
+         $('#carousel').flexslider({
+             animation: "slide",
+             controlNav: false,
+             animationLoop: true,
+             slideshowSpeed: 3000,
+             slideshow: true,
+             itemWidth: 100,
+             itemMargin:5,
+             asNavFor: '#slider'
+         });
+    });
+     function changeQuantity(quantity) {
+         if (quantity < 0) {
+             alert("Số lượng phải lớn 0");
+             $('#quantity').val(1);
+         }
+     }
+     function addToCart(id) {
+         let quantity = $('#quantity').val();
+         location.href = "/dat-mua-hang?id=" + id + "&quantity=" + quantity;
+     }
+</script>
+
+ 

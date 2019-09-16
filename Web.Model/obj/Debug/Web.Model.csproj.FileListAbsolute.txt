@@ -1,0 +1,56 @@
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\Web.Model.dll.config
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\Web.Model.dll
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\Web.Model.pdb
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\EntityFramework.dll
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\Web.Core.dll
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\EntityFramework.xml
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\New folder\LedQuaTang\Web.Model\bin\Debug\Web.Core.pdb
+E:\New folder\LedQuaTang\Web.Model\obj\Debug\Web.Model.csprojAssemblyReference.cache
+E:\New folder\LedQuaTang\Web.Model\obj\Debug\Web.Model.csproj.CoreCompileInputs.cache
+E:\New folder\LedQuaTang\Web.Model\obj\Debug\Web.Model.csproj.CopyComplete
+E:\New folder\LedQuaTang\Web.Model\obj\Debug\Web.Model.dll
+E:\New folder\LedQuaTang\Web.Model\obj\Debug\Web.Model.pdb
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\Web.Model.dll.config
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\Web.Model.dll
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\Web.Model.pdb
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\EntityFramework.dll
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\Web.Core.dll
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\EntityFramework.xml
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\đồ án\LedQuaTang\Web.Model\bin\Debug\Web.Core.pdb
+D:\đồ án\LedQuaTang\Web.Model\obj\Debug\Web.Model.csprojAssemblyReference.cache
+D:\đồ án\LedQuaTang\Web.Model\obj\Debug\Web.Model.csproj.CoreCompileInputs.cache
+D:\đồ án\LedQuaTang\Web.Model\obj\Debug\Web.Model.csproj.CopyComplete
+D:\đồ án\LedQuaTang\Web.Model\obj\Debug\Web.Model.dll
+D:\đồ án\LedQuaTang\Web.Model\obj\Debug\Web.Model.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\Web.Model.dll.config
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\Web.Model.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\Web.Model.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\EntityFramework.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\Web.Core.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\EntityFramework.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\bin\Debug\Web.Core.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\obj\Debug\Web.Model.csprojResolveAssemblyReference.cache
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\obj\Debug\Web.Model.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Model\obj\Debug\Web.Model.pdb
+E:\BearShop\Web.Model\bin\Debug\Web.Model.dll.config
+E:\BearShop\Web.Model\bin\Debug\Web.Model.dll
+E:\BearShop\Web.Model\bin\Debug\Web.Model.pdb
+E:\BearShop\Web.Model\bin\Debug\EntityFramework.dll
+E:\BearShop\Web.Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\BearShop\Web.Model\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\BearShop\Web.Model\bin\Debug\Web.Core.dll
+E:\BearShop\Web.Model\bin\Debug\EntityFramework.xml
+E:\BearShop\Web.Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\BearShop\Web.Model\bin\Debug\Web.Core.pdb
+E:\BearShop\Web.Model\obj\Debug\Web.Model.csprojResolveAssemblyReference.cache
+E:\BearShop\Web.Model\obj\Debug\Web.Model.dll
+E:\BearShop\Web.Model\obj\Debug\Web.Model.pdb

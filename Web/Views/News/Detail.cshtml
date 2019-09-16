@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    var lstRight = ViewBag.RightRelated;
+    var lstLeft = ViewBag.LeftRelated;
+    var dothtml = ".html";
+}
+<style>
+    .content_detail {
+        text-align: justify;
+    }
+</style>
+@using Web.Core
+@model Web.Model.CustomModel.ListNews
+<input type="hidden" id="hdNewDetail" value="0" />
+<div class="col-xs-12 col-md-9 col-sm-9"  id="view_detail">
+    <div class="gioi-thieu-svn">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">@Model.CategoryNews</div>
+            </div>
+            <span style="font-style:italic;margin-left:15px">@string.Format("{0:dd/MM/yyyy HH:mm}", Model.CreatedDate)</span>
+            <div class="panel-body">
+                <div class="post_content">
+                    <h2 style="text-align: center;"><strong><span style="color: #ff0000;">@Model.MetaTitle</span></strong></h2>
+                    <div class="content_detail">
+                        @Html.Raw(Model.Contents)
+                    </div>
+                    <div class="clear"></div>
+                    <div class="tag_post">
+                        <label>Tag : </label>
+                        @*@if (Model.Tags != null)
+                        {
+                            foreach (var item in Model.Tags)
+                            {
+                                <a href="#">cách nuôi nhím cảnh</a>
+                            }
+                        }*@
+                    </div>
+                    <div id="fb-root"></div>
+                    <div class="bai-viet-lien-quan">
+                        <div class="tabcontainer">
+                            <ul>
+                                <li class="diem1 active"><a alt="#tab1">Tin liên quan</a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-xs-12 col-md-6">
+                                @foreach (var item in lstRight)
+                                {
+                                    string description = item.Desciption;
+                                    if (description.Length > 90)
+                                    {
+                                        description = description.Substring(0, 90) + "...";
+                                    }
+                                    <div class="item-lienquan">
+                                        <div class="image">
+                                            <a href="/chi-tiet-tin-tuc/@item.ID/@HelperString.RenderLinkSeo(item.MetaTitle)@dothtml"><img src="@item.Image" alt="h.anh"></a>
+                                        </div>
+                                        <div class="description">
+                                            <h3><a href="/chi-tiet-tin-tuc/@item.ID/@HelperString.RenderLinkSeo(item.MetaTitle)@dothtml">@item.MetaTitle</a></h3>
+                                            <time>@string.Format("{0:dd/MM/yyyy HH:mm}", item.CreatedDate)</time>
+                                            <p class="mota">
+                                               @description
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                @foreach (var item in lstLeft)
+                                {
+                                    string description = item.Desciption;
+                                    if (description.Length > 90)
+                                    {
+                                        description = description.Substring(0, 90) + "...";
+                                    }
+                                    <div class="item-lienquan">
+                                        <div class="image">
+                                            <a href="/chi-tiet-tin-tuc/@item.ID/@HelperString.RenderLinkSeo(item.MetaTitle)@dothtml"><img src="@item.Image" alt="h.anh"></a>
+                                        </div>
+                                        <div class="description">
+                                            <h3><a href="/chi-tiet-tin-tuc/@item.ID/@HelperString.RenderLinkSeo(item.MetaTitle)@dothtml">@item.MetaTitle</a></h3>
+                                            <time>@string.Format("{0:dd/MM/yyyy HH:mm}", item.CreatedDate)</time>
+                                            <p class="mota">
+                                                @description
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
+                            </div> 
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>

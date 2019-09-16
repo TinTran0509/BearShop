@@ -1,0 +1,37 @@
+﻿@model List<Web.Model.Slide>
+<div id="jssor_1" class="slider-svn">
+    
+    <div data-u="loading" class="jssorl-009-spin loading">
+        <img class="img-slider-svn" src="../svg/loading/static-svg/spin.svg" />
+    </div>
+    <div data-u="slides" class="slider-svn-group">
+        @foreach (var item in Model)
+        {
+            <div>
+                <a href="@item.Link"><img class="img-responsive" data-u="image" src="@item.Image" alt="@item.Title" /></a>
+            </div>
+        }
+    </div>
+    <div data-u="navigator" class="jssorb053 nav-slider-svn" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
+        <div data-u="prototype" class="i prototype-svn">
+            <svg viewBox="0 0 16000 16000">
+                <path class="b" d="M11400,13800H4600c-1320,0-2400-1080-2400-2400V4600c0-1320,1080-2400,2400-2400h6800 c1320,0,2400,1080,2400,2400v6800C13800,12720,12720,13800,11400,13800z"></path>
+            </svg>
+        </div>
+    </div>
+   
+    <div data-u="arrowleft" class="jssora093 arrowleft-svn" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
+        <svg viewBox="0 0 16000 16000">
+            <circle class="c" cx="8000" cy="8000" r="5920"></circle>
+            <polyline class="a" points="7777.8,6080 5857.8,8000 7777.8,9920 "></polyline>
+            <line class="a" x1="10142.2" y1="8000" x2="5857.8" y2="8000"></line>
+        </svg>
+    </div>
+    <div data-u="arrowright" class="jssora093 arrowright-svn" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
+        <svg viewBox="0 0 16000 16000">
+            <circle class="c" cx="8000" cy="8000" r="5920"></circle>
+            <polyline class="a" points="8222.2,6080 10142.2,8000 8222.2,9920 "></polyline>
+            <line class="a" x1="5857.8" y1="8000" x2="10142.2" y2="8000"></line>
+        </svg>
+    </div>
+</div>

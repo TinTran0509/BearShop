@@ -1,0 +1,15 @@
+﻿@model Web.Model.About
+<div class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-md-2">Tiêu đề:</label>
+        <div class="col-md-10">
+            <p>@Model.MetaTitle</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Nội dung:</label>
+        <div class="col-md-10">
+            <p>@Html.Raw(Model.Contents)</p>
+        </div>
+    </div>
+</div>

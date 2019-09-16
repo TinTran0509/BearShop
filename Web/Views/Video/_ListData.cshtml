@@ -1,0 +1,62 @@
+﻿@using Web.Core
+@using Web.Model
+@model IEnumerable<VideoModel>
+@{
+    var lstAction = (List<int>)HttpContext.Current.Session["Action"];
+}
+<div class="row port">
+    <div class="portfolioContainer" style="position: relative; height: 792px;">
+        @{
+            var i = 0;
+            string domainName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+            string domain = domainName.Split(new string[] { "//" }, StringSplitOptions.None)[1];
+        }
+        @foreach (var item in Model)
+        {
+            string url = "http://" + domain + item.Url;
+            if (i % 4 == 0)
+            {
+                <div class="row"></div>
+            }
+            i++;
+            if (!item.Url.Contains("https"))
+            {
+                item.Url = "https://" + item.Url;
+            }
+            <div class="col-md-3 pull-left">
+                <div class="gal-detail thumb">
+                    <a class="fancybox" href="#boxvideo-@item.ID" title="@item.Name" style="text-decoration: none;">
+                        <div style="pointer-events: none;">
+                            @if (item.Type == 1)
+                            {
+                                <img id="imgyoutube" src="@(item.Images??"Content/Site/images/noimage.png")"  style="width:100% !important; height:auto !important" />
+                            }
+                            else
+                            {
+                                <video  style="width:100% !important; height:auto !important" controls><source src="@url" type="video/mp4"></video>
+                            }
+                        </div>
+                        <p style="margin-top: 0; height: 35px; overflow: hidden;"><b>@item.Name</b></p>
+                    </a>
+                    <div id="boxvideo-@item.ID" style="display: none;width: 100%;height:auto;">
+                        @if (item.Type == 1)
+                        {
+                            var urlyoutube = new Uri(item.Url);
+                            var idyoutube = HttpUtility.ParseQueryString(urlyoutube.Query).Get("v");
+                            <iframe width="640" height="480" src="https://www.youtube.com/embed/@idyoutube" frameborder="0" allowfullscreen></iframe>
+                        }
+                        else
+                        {
+                            <video width="640" height="480" controls><source src="@url" type="video/mp4"></video>
+                        }
+                    </div>    
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".fancybox").fancybox();
+    });
+</script>

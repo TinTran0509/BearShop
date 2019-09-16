@@ -1,0 +1,66 @@
+﻿@model Web.Model.Policy
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/AppJs/policy.js"></script>
+@using (Ajax.BeginForm("Edit", "Policy", null,
+                                                    new AjaxOptions
+                                                    {
+                                                        HttpMethod = "POST",
+                                                        OnSuccess = "about.onAddSuccess"
+                                                    },
+                                                    new { @id = "frmData", @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(x => x.ID)
+    <div class="form-group">
+        <label class="control-label col-md-2">Tiêu đề</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.MetaTitle, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Nội dung<span class="asterisk"> (*)</span></label>
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Contents, new { rows = "20", style = "resize:none;width:400px;", @class = "form-control input-lg textarea-editor" })
+            <span class="error" id="spcontent"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-3 col-md-9">
+            <a href="/Admin/Policy" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
+            <button type="submit" onclick="checkAdd('close')" id="btnsaveadd" class="btn btn-primary">Lưu lại</button>
+        </div>
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        $("#frmData").validate({
+            rules:
+            {
+                Contents:
+                {
+                    required: true
+                }
+            },
+            messages:
+            {
+                Contents:
+                {
+                    required: "Vui lòng nhập nội dung"
+                }
+            },
+            highlight: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+    })
+    function checkAdd() {
+       
+    }
+
+</script>

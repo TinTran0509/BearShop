@@ -1,0 +1,56 @@
+﻿@model List<Web.Model.CustomModel.ProductModel>
+   @{
+       var dothtml = ".html";
+}
+    @using Web.Core
+    @foreach (var item in Model)
+    {
+        <input type="hidden" class="titleModel" value="@Model[0].CategoryName" />
+        <div class="col-md-4">
+            <div class="item-svn">
+                <div class="image-fix">
+                    <img class="img-responsive" src="@item.Images" alt="@item.Name">
+                </div>
+                <a href="/chi-tiet-san-pham/@item.ID/@HelperString.RenderLinkSeo(item.Name)@dothtml" title="@item.Name">
+                <h2>@HelperString.TruncateByWord(HelperString.StripHTML(HttpUtility.HtmlDecode(item.Name)),50)</h2></a>
+                <span>Mã SP: @item.ProductCode</span>
+                <div class="shopping">
+                    <a class="muangay" href="/dat-mua-hang?id=@item.ID&quantity=1" title="Mua ngay">Mua ngay</a>
+                </div>
+                <div class="descrtion-svn">
+                    <div class="price-svn">
+                        @{
+                            if (item.Price == null && item.Sale == null)
+                            {
+                                <span><strike></strike></span>
+                                <br>
+                                <span><strong class="price">Liên hệ</strong></span>
+                            }
+                            if (item.Price != null && item.Sale == null)
+                            {
+                                <span><strike></strike></span>
+                                <br>
+                                <span><strong class="price">@String.Format("{0:0,0}", item.Price).Replace(",", ".") đ</strong></span>
+                            }
+                            if (item.Price == null && item.Sale != null)
+                            {
+                                <span><strike></strike></span>
+                                <br>
+                                <span><strong class="price">Gía bán : @String.Format("{0:0,0}", item.Sale).Replace(",", ".") đ</strong></span>
+                            }
+                            if (item.Price != null && item.Sale != null)
+                            {
+                                <span><strike>Gía cũ :@String.Format("{0:0,0}", item.Price).Replace(",", ".") đ</strike></span>
+                                <br>
+                                <span><strong class="price">Gía bán : @String.Format("{0:0,0}", item.Sale).Replace(",", ".") đ</strong></span>
+                            }
+                        }
+                        <a class="pull-right detail-svn" href="/chi-tiet-san-pham/@item.ID/@HelperString.RenderLinkSeo(item.Name)@dothtml" title="Chi tiết">Chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+     }
+
+ 
+ 

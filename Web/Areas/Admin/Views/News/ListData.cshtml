@@ -1,0 +1,76 @@
+﻿@using Web.Core
+@using Web.Model.CustomModel
+@model List<Web.Model.CustomModel.ListNews>
+    <style>
+        .btn_action {
+            margin-top: 2px
+        }
+    </style>
+@{
+    var lstAction = (List<int>)HttpContext.Current.Session["Action"];
+}
+<div class="col-xs-12">
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Tiêu đề</th>
+                <th>Hình ảnh</th>
+                <th>Mô tả</th>
+                <th>Nội dung</th>
+                <th>Danh mục tin</th>
+                <th>Người tạo</th>
+                <th>Ngày tạo</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MetaTitle</td>
+                    <td><img style="width:50px" src="@item.Image" /></td>
+                    <td>@item.Desciption</td>
+                    <td>@HelperString.TruncateByWord(HelperString.StripHTML(HttpUtility.HtmlDecode(item.Contents)), 120)</td>
+                    <td>@item.CategoryNews</td>
+                    <td>@item.FullName</td>
+                    <td>@string.Format("{0:dd/MM/yyyy HH:mm}",item.CreatedDate)</td>
+                    <td style="width:100px">
+                        @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.View))
+                        {
+                            <a href="javascript:void(0)" class="btn btn-default btn-bordered" onclick="News.handleViewDetail(@item.ID)" title="Xem chi tiết">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </a>
+                        }
+                        @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Approved))
+                        {
+                            if (item.Status != 2)
+                            {
+                                <a href="javascript:void(0)" class="btn btn-default btn-bordered" onclick="News.handlePublish(@item.ID)" title="Đăng bài">
+                                    <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="javascript:void(0)" class="btn btn-default btn-bordered" onclick="News.handleUnPublish(@item.ID)" title="Hủy đăng bài">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                            }
+                        }
+                        @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Edit))
+                        {
+                            <a href="/Admin/News/Edit/@item.ID" class="btn btn-default btn-bordered btn_action" title="Sửa">
+                                <i class="fa fa-edit text-info"></i>
+                            </a>
+                        }
+                        @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Delete))
+                        {
+                            <a href="javascript:void(0)" class="btn btn-default btn-bordered btn_action" onclick="News.handleDeleteItem(@item.ID) " title="Xóa">
+                                <i class="fa fa-trash text-danger"></i>
+                            </a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

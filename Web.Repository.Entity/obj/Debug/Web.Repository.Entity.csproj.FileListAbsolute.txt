@@ -1,0 +1,74 @@
+E:\New folder\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Repository.Entity.dll
+E:\New folder\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Repository.Entity.pdb
+E:\New folder\LedQuaTang\Web.Repository.Entity\bin\Debug\EntityFramework.dll
+E:\New folder\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Core.dll
+E:\New folder\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Model.dll
+E:\New folder\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Repository.dll
+E:\New folder\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Repository.pdb
+E:\New folder\LedQuaTang\Web.Repository.Entity\bin\Debug\EntityFramework.xml
+E:\New folder\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Core.pdb
+E:\New folder\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Model.pdb
+E:\New folder\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Model.dll.config
+E:\New folder\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.csprojAssemblyReference.cache
+E:\New folder\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.csproj.CoreCompileInputs.cache
+E:\New folder\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.csproj.CopyComplete
+E:\New folder\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.dll
+E:\New folder\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.pdb
+D:\đồ án\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Repository.Entity.dll
+D:\đồ án\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Repository.Entity.pdb
+D:\đồ án\LedQuaTang\Web.Repository.Entity\bin\Debug\EntityFramework.dll
+D:\đồ án\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Core.dll
+D:\đồ án\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Model.dll
+D:\đồ án\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Repository.dll
+D:\đồ án\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Repository.pdb
+D:\đồ án\LedQuaTang\Web.Repository.Entity\bin\Debug\EntityFramework.xml
+D:\đồ án\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Core.pdb
+D:\đồ án\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Model.pdb
+D:\đồ án\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Model.dll.config
+D:\đồ án\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.csprojAssemblyReference.cache
+D:\đồ án\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.csproj.CoreCompileInputs.cache
+D:\đồ án\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.csproj.CopyComplete
+D:\đồ án\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.dll
+D:\đồ án\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.pdb
+E:\doan\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Repository.Entity.dll
+E:\doan\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Repository.Entity.pdb
+E:\doan\LedQuaTang\Web.Repository.Entity\bin\Debug\EntityFramework.dll
+E:\doan\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Core.dll
+E:\doan\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Model.dll
+E:\doan\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Repository.dll
+E:\doan\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Repository.pdb
+E:\doan\LedQuaTang\Web.Repository.Entity\bin\Debug\EntityFramework.xml
+E:\doan\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Core.pdb
+E:\doan\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Model.pdb
+E:\doan\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Model.dll.config
+E:\doan\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.csprojAssemblyReference.cache
+E:\doan\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.csproj.CoreCompileInputs.cache
+E:\doan\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.csproj.CopyComplete
+E:\doan\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.dll
+E:\doan\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Repository.Entity.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Repository.Entity.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository.Entity\bin\Debug\EntityFramework.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Core.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Model.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Repository.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Repository.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository.Entity\bin\Debug\EntityFramework.xml
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Core.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository.Entity\bin\Debug\Web.Model.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.csprojResolveAssemblyReference.cache
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.pdb
+E:\BearShop\Web.Repository.Entity\bin\Debug\Web.Repository.Entity.dll
+E:\BearShop\Web.Repository.Entity\bin\Debug\Web.Repository.Entity.pdb
+E:\BearShop\Web.Repository.Entity\bin\Debug\EntityFramework.dll
+E:\BearShop\Web.Repository.Entity\bin\Debug\Web.Core.dll
+E:\BearShop\Web.Repository.Entity\bin\Debug\Web.Model.dll
+E:\BearShop\Web.Repository.Entity\bin\Debug\Web.Repository.dll
+E:\BearShop\Web.Repository.Entity\bin\Debug\Web.Repository.pdb
+E:\BearShop\Web.Repository.Entity\bin\Debug\EntityFramework.xml
+E:\BearShop\Web.Repository.Entity\bin\Debug\Web.Core.pdb
+E:\BearShop\Web.Repository.Entity\bin\Debug\Web.Model.pdb
+E:\BearShop\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.csprojResolveAssemblyReference.cache
+E:\BearShop\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.dll
+E:\BearShop\Web.Repository.Entity\obj\Debug\Web.Repository.Entity.pdb

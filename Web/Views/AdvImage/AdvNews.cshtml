@@ -1,0 +1,9 @@
+﻿@model List<Web.Model.AdvImag>
+@foreach (var item in Model)
+{
+    <div class="col-md-6 col-xs-12">
+        <img class="img-responsive" src="@item.Image" alt="@item.Title">
+    </div>
+}
+ 
+

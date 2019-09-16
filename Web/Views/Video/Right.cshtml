@@ -1,0 +1,172 @@
+﻿@using Web.Core
+@using Web.Model
+@{
+    Layout = null;
+    var Model = (List<tbl_Gallery>)ViewBag.lstGallery;
+    var homeVideo = (tbl_Video)ViewBag.homeVideo;
+    var dothtml = ".html";
+}
+@if (homeVideo != null && Model != null)
+{
+    <ul class="nav nav-tabs navImgVideo">
+        <li class="active"><a data-id="video" data-toggle="tab" href="#video" style="cursor:pointer">Video</a><span class="iconshow"></span></li>
+        <li><a data-id="anhhoatdong" data-toggle="tab" href="#anhhoatdong" style="cursor:pointer">Ảnh hoạt động</a><span class="iconshow"></span></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="video" class="tab-pane fade in active">
+            @if (homeVideo != null)
+            {
+                <div class="right_panel right_panel_ImgVideo">
+                    <div class="right_panel_content">
+                        @*<img src="/assets/images/video-img.jpg" alt="">
+                            <div class="caption">
+                                <a href="" title="Chủ tịch UBND tỉnh yêu cầu tăng cường đảm bảo an ninh, trật tự ">Chủ tịch UBND tỉnh yêu cầu tăng cường đảm bảo an ninh, trật tự dịp nghỉ lễ quốc khánh 2/9</a>
+                            </div>*@
+                        <link href="/Content/Admin/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
+                        <link href="/Content/Admin/assets/fancybox/source/helpers/jquery.fancybox-buttons.css" rel="stylesheet" />
+                        <link href="/Content/Admin/assets/fancybox/source/helpers/jquery.fancybox-thumbs.css" rel="stylesheet" />
+                        <script src="/Content/Admin/assets/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+                        <script src="/Content/Admin/assets/fancybox/source/jquery.fancybox.js"></script>
+                        <script src="/Content/Admin/assets/fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
+                        <script src="/Content/Admin/assets/fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
+                        <script src="/Content/Admin/assets/fancybox/source/helpers/jquery.fancybox-media.js"></script>
+                        @*<a class="fancybox" href="#boxvideo-@homeVideo.ID" title="@homeVideo.Name" style="text-decoration: none;">*@
+                        @*<div style="pointer-events: none;">*@
+                        @if (homeVideo != null)
+                        {
+                            if (homeVideo.Type != null && homeVideo.Type == 1)
+                            {
+                                <video width="100%" height="100%" controls><source src="@homeVideo.Url" type="video/mp4"></video>
+                            }
+                            else
+                            {
+                                var urlyoutube = new Uri(homeVideo.Url);
+                                var idyoutube = HttpUtility.ParseQueryString(urlyoutube.Query).Get("v");
+                                var rel0 = "?rel=0";
+                                <iframe width="100%" src="https://www.youtube.com/embed/@idyoutube@rel0" frameborder="0" allowfullscreen></iframe>
+                                @*<img id="imgyoutube" src="@(homeVideo.Images??"Content/Site/images/noimage.png")" width="100%" height="100%" />*@
+                            }
+                            @*</div>*@
+                            <p>@homeVideo.Name</p>
+                            @*</a>*@
+                            @*<div id="boxvideo-@homeVideo.ID" style="display: none;width: 100%;height: 100%;">
+                                    @if (homeVideo.Type == 1)
+                                    {
+                                        <video width="640" height="480" controls><source src="@homeVideo.Url" type="video/mp4"></video>
+                                    }
+                                    else
+                                    {
+                                        var urlyoutube = new Uri(homeVideo.Url);
+                                        var idyoutube = HttpUtility.ParseQueryString(urlyoutube.Query).Get("v");
+                                        var rel0 = "?rel=0";
+                                        <iframe width="100%" src="https://www.youtube.com/embed/@idyoutube@rel0" frameborder="0" allowfullscreen></iframe>
+                                    }
+                                </div>*@
+                            @*<input type="hidden" id="homeVideoID" value="@homeVideo.ID" />*@
+                        }
+                        <script>
+                            $(document).ready(function () {
+                                $(".fancybox").fancybox();
+                            });
+                            /*function playvideo() {
+                                var homeVideoID = $("#homeVideoID").val();
+                                var boxhome = $("#boxvideo-" + homeVideoID).html();
+                                $("#imgyoutube").parent().html(boxhome);
+                            }*/
+                        </script>
+                    </div>
+                </div>
+            }
+        </div>
+        <div id="anhhoatdong" class="tab-pane fade">
+            <div class="right_panel right_panel_ImgVideo">
+                <div class="right_panel_content">
+                    <div class="galary custom-gallery-home">
+                        <div id="carousel-id-2" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                @{int i = 0;}
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        var active = "";
+                                        if (i == 0) { active = "active"; }
+                                        <div class="item @active">
+                                            <a class="fancybox-effects-d" data-fancybox-group="thumb" onclick="showAlbum(@i,@item.CategoryId)">
+                                                <img alt="" src="@item.Images" width="250" height="170" style="width: 250px; height: 170px !important">
+                                            </a>
+                                            @*<div class="container">
+                                                    <div class="carousel-caption">
+                                                        <p>@item.Name</p>
+                                                    </div>
+                                                </div>*@
+                                        </div>
+                                        i++;
+                                    }
+                                }
+                            </div>
+                            <a class="left carousel-control" href="#carousel-id-2" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                            <a class="right carousel-control" href="#carousel-id-2" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                            @*<p style="font-size: 12px; padding: 7px 5px 0; font-weight: bold;">@ViewBag.GCName <a href="/pages/gallery/@ViewBag.GCID/@HelperString.RemoveMark(@ViewBag.GCName)@dothtml" class="pull-right">Xem thêm <i class="fa fa-chevron-right" aria-hidden="true"></i></a></p>*@
+                            <p><a href="/pages/gallery/@ViewBag.GCID/@HelperString.RemoveMark(@ViewBag.GCName)@dothtml">@ViewBag.GCName</a></p>
+                        </div>
+                    </div>
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" style="border: none; box-shadow: none; top:-13px;">
+                            <div class="modal-content" style="background: none; box-shadow: 0px 0px 5px 5px white; box-sizing: initial; border: none;">
+                                <a title="Close" class="fancybox-item fancybox-close" data-dismiss="modal" aria-label="Close" href="javascript:;"></a>
+                                <div id="Album_html"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                function showAlbum(tt, AlbumID) {
+                    console.log(tt);
+                    $.ajax({
+                        type: "GET",
+                        url: "/Adv/showAlbum?tt=" + tt + "&AlbumID=" + AlbumID,
+                        dataType: 'json',
+                        success: function (response_text) {
+                            var res = response_text;
+                            $("#Album_html").html(res.viewContent);
+                            $(".bd-example-modal-lg").modal("show");
+                        }
+                    });
+                }
+                $(document).ready(function () {
+                    $('.fancybox-thumbs').fancybox({
+                        /* prevEffect: 'none',
+                         nextEffect: 'none',*/
+
+                        closeBtn: true,
+                        arrows: true,
+                        nextClick: true,
+
+                        helpers: {
+                            thumbs: {
+                                width: 50,
+                                height: 50
+                            }
+                        }
+                    });
+                    $(".navImgVideo li a").click(function() {
+                        var chref = $(this).attr("data-id");
+                        if (chref == "video") {
+                            if ($(this).parent().hasClass("active")) {
+                                window.location.href = '/pages/video.html';
+                            }
+                        }
+                        if (chref == "anhhoatdong") {
+                            if ($(this).parent().hasClass("active")) {
+                                window.location.href = '/pages/gallery/thu-vien-anh.html';
+                            }
+                        }
+                    });
+                });
+            </script>
+        </div>
+    </div>
+}

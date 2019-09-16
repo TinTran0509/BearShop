@@ -1,0 +1,193 @@
+﻿@using Web.Model
+@model Product
+@{
+    ViewBag.Title = "Sửa thông tin sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var error = ViewBag.Error;
+    var category = (List<Category>)TempData["Category"];
+}
+<script src="~/AppJs/product.js"></script>
+<p style="color:red">Chú ý các trường có dấu (*) là yêu cầu bắt buộc</p>
+@using (Ajax.BeginForm("Edit", "Product", null,
+        new AjaxOptions
+        {
+            HttpMethod = "POST",
+            OnSuccess = "Product.onEditSuccess"
+        }, new { id = "frmData", @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(x=>x.ID)
+    <div class="form-group">
+        <label class="control-label col-md-2">Danh mục<span class="asterisk"> (*)</span></label>
+        <div class="col-md-4">
+            @Html.DropDownList("CategoryId", new SelectList(category, "ID", "Name"), "--- Chọn danh mục ---", new { @class = "form-control select2" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Tên sản phẩm<span class="asterisk"> (*)</span></label>
+        <div class="col-md-6">
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Mã sản phẩm<span class="asterisk"> (*)</span></label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(x => x.ProductCode, new { @class = "form-control", @oninput = "getCode(this.value)", @onkeyup = "Product.checkCode(this.value)" })
+        </div>
+        <span class="error" id="product_code"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Hình ảnh <span class="asterisk"> (*)</span></label>
+        <div class="col-md-9">
+            <div class="col-md-2">
+                @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Images" });}
+            </div>
+            <img src="@Model.Images" style="width:100px" id="prevImages">
+            <span class="error" id="spImg"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Gía bán</label>
+        <div class="col-md-4 lockChar">
+            <input type="text" id="price_add" class="form-control"/>
+            @Html.HiddenFor(model => model.Price)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Gía khuyến mãi</label>
+        <div class="col-md-4 lockChar">
+            <input type="text" id="sale_add" class="form-control" />
+            @Html.HiddenFor(model => model.Sale)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-10 pull-right">
+            <div class="checkbox checkbox-primary">
+                <input id="IsHot" name="IsHot" type="checkbox" @(Model.IsHot==true?"checked":"") value="true">
+                <label for="IsHot">
+                    Là sản phẩm bán chạy
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Mô tả<span class="asterisk"> (*)</span></label>
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Description, new { rows = "20", style = "resize:none;width:400px;", @class = "form-control input-lg textarea-editor" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a href="/Admin/Product" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay trở lại</a>
+            <button onclick="checkAdd()" id="btnsaveadd" class="btn btn-primary">Lưu lại</button>
+        </div>
+    </div>
+    }
+<input type="hidden" id="acctionadd" value="0" />
+<script>
+    function getCode(code) {
+        let value = RemoveProductCode(code);
+        $('#ProductCode').val(value);
+    }
+    var price = '@String.Format("{0:0,0}", Model.Price)';
+    if (price != null) {
+        $('#price_add').val(price);
+    }
+    var sale = '@String.Format("{0:0,0}", Model.Sale)';
+    if (sale != null) {
+        $('#sale_add').val(sale);
+    }
+    $(document).ready(function () {
+        $("#frmData").validate({
+            rules:
+            {
+                Name:
+                {
+                    required: true,
+                    maxlength: 250
+                },
+                Description:
+                {
+                    required: true,
+                    maxlength: 500
+                },
+                ProductCode:
+                {
+                    required: true,
+                    maxlength: 50
+                }
+            },
+            messages:
+            {
+                Name:
+                {
+                    required: "Vui lòng nhập tên sản phẩm"
+                },
+                Description:
+                {
+                    required: "Vui lòng thêm mô tả sản phẩm"
+                },
+                ProductCode:
+                {
+                    required: "Vui lòng nhập mã sản phẩm"
+                }
+            },
+            highlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                $(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+        $('#fileUpload').on('change', function () {
+            $('#spImg').text("");
+        })
+
+        var price_add = $('#price_add');
+        let price = '#Price';
+        price_add.keyup(function () {
+            let num = price_add.val();
+            let comma = /,/g;
+            num = num.replace(comma, '');
+            let numCommas = addCommas(num);
+            let numNew = numCommas.replace(/\,/g, '');
+            price_add.val(numCommas);
+            $(price).val(numNew);
+        });
+        var sale_add = $('#sale_add');
+        let sale = '#Sale';
+        sale_add.keyup(function () {
+            let num = sale_add.val();
+            let comma = /,/g;
+            num = num.replace(comma, '');
+            let numCommas = addCommas(num);
+            let numNew = numCommas.replace(/\,/g, '');
+            sale_add.val(numCommas);
+            $(sale).val(numNew);
+        });
+    })
+    function addCommas(nStr) {
+        nStr += '';
+        var comma = /,/g;
+        nStr = nStr.replace(comma, '');
+        x = nStr.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        return x1 + x2;
+    }
+    function checkAdd() {
+        let img = $('#urlImage').val();
+        if (img === '') {
+            $('#spImg').text("Vui lòng chọn ảnh");
+        }  
+    }
+
+</script>
+
+

@@ -1,0 +1,134 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutGallery.cshtml";
+    var dohtml = ".html";
+    var lstGallery = (List<Web.Model.tbl_Gallery>)ViewBag.lstGallery;
+    var link_css = "http://" + HttpContext.Current.Request.Url.Host + "/assets/js/TinySlideshow/style.css";
+    var link_js = "http://" + HttpContext.Current.Request.Url.Host + "/assets/js/TinySlideshow/tinyslideshow.js";
+}
+@using PagedList;
+@using PagedList.Mvc
+@using Web.Core
+@using Web.Model
+@using Web.Areas.Admin.Controllers
+@model IPagedList<tbl_GalleryCategory>
+<script src="~/assets/js/jquery-1.11.3.min.js"></script>
+<script src="~/assets/PgwSlide/pgwslideshow.min.js"></script>
+<link href="~/assets/PgwSlide/pgwslideshow.min.css" rel="stylesheet" />
+<div class="row margin-top10">
+    <div class="col-md-12">
+        <div class="col-xs-12 content-body procedure no-padding">
+            <div class="title-content-body">
+                <div class="title-content">
+                    <a href="javascript:void(0)"> @ViewBag.title</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <ul class="pgwSlideshow">
+            @foreach (var itemGallery in lstGallery)
+            {
+                <li><img style="height:auto!important;" src="@System.Configuration.ConfigurationManager.ConnectionStrings["SITE_URL"]@itemGallery.Images" data-description="@itemGallery.Name"></li>
+            }
+        </ul>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.pgwSlideshow').pgwSlideshow({
+            autoSlide: true
+        });
+    });
+</script>
+@*<div class="row">
+        <div class="col-md-12">
+            @if (lstGallery.Count > 0)
+    {
+        <ul id="slideshow">
+            @foreach (var itemGallery in lstGallery)
+            {
+                if (itemGallery.Status == true)
+                {
+                <li>
+                    <h3>@itemGallery.Name</h3>
+                    <span>@System.Configuration.ConfigurationManager.ConnectionStrings["SITE_URL"]@itemGallery.Images </span>
+                    <p></p>
+                    <a href="#"><img src="@System.Configuration.ConfigurationManager.ConnectionStrings["SITE_URL"]@itemGallery.Images" class="img-responsive" /></a>
+                </li>
+                }
+            }
+        </ul>
+
+        <div id="wrapper_tiny">
+            <div id="fullsize">
+                <div id="imgprev" class="imgnav" title="Previous Image"></div>
+                <div id="imgnext" class="imgnav" title="Next Image"></div>
+                <div id="image"></div>
+                <div id="information">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+            <div id="thumbnails">
+                <div id="slideleft" title="Slide Left"></div>
+                <div id="slidearea">
+                    <div id="slider"></div>
+                </div>
+                <div id="slideright" title="Slide Right"></div>
+            </div>
+        </div>
+    }
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $('slideshow').style.display = 'none';
+        $('wrapper_tiny').style.display = 'block';
+        var slideshow = new TINY.slideshow("slideshow");
+        window.onload = function () {
+            slideshow.auto = true;
+            slideshow.speed = 5;
+            slideshow.link = "linkhover";
+            slideshow.info = "information";
+            slideshow.thumbs = "slider";
+            slideshow.left = "slideleft";
+            slideshow.right = "slideright";
+            slideshow.scrollSpeed = 4;
+            slideshow.spacing = 5;
+            slideshow.active = "#000";
+            slideshow.init("slideshow", "image", "imgprev", "imgnext", "imglink");
+        }
+    </script>*@
+
+<div class="row margin-top10">
+    <div class="col-md-12">
+        <div class="col-xs-12 content-body procedure no-padding">
+            <div class="title-content-body">
+                <div class="title-content">
+                    <a href="javascript:void(0)">@ConfigTextController.GetValueCFT("tv_danhmuckhac")</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row custom-gallery-category">
+    @{ int i = 0;}
+    @foreach (var item in Model)
+    {
+        i++;
+        if (item.Active == true)
+        {
+            <div class="col-md-3 aligncenter">
+                <a href="/pages/gallery/@item.ID/@HelperString.RemoveMark(item.Name)@dohtml"><img src="@item.Icon" width="175" height="125" /></a>
+                <p><a href="/pages/gallery/@item.ID/@HelperString.RemoveMark(item.Name)@dohtml">@item.Name</a> </p>
+            </div>
+        }
+        if (i % 4 == 0)
+        {
+            <div class="clearfix"></div>
+        }
+    }
+</div>

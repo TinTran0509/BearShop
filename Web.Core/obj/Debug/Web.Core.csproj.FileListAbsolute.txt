@@ -1,0 +1,21 @@
+E:\New folder\LedQuaTang\Web.Core\bin\Debug\Web.Core.dll
+E:\New folder\LedQuaTang\Web.Core\bin\Debug\Web.Core.pdb
+E:\New folder\LedQuaTang\Web.Core\obj\Debug\Web.Core.csproj.CoreCompileInputs.cache
+E:\New folder\LedQuaTang\Web.Core\obj\Debug\Web.Core.dll
+E:\New folder\LedQuaTang\Web.Core\obj\Debug\Web.Core.pdb
+E:\New folder\LedQuaTang\Web.Core\obj\Debug\Web.Core.csprojAssemblyReference.cache
+D:\đồ án\LedQuaTang\Web.Core\bin\Debug\Web.Core.dll
+D:\đồ án\LedQuaTang\Web.Core\bin\Debug\Web.Core.pdb
+D:\đồ án\LedQuaTang\Web.Core\obj\Debug\Web.Core.csprojAssemblyReference.cache
+D:\đồ án\LedQuaTang\Web.Core\obj\Debug\Web.Core.csproj.CoreCompileInputs.cache
+D:\đồ án\LedQuaTang\Web.Core\obj\Debug\Web.Core.dll
+D:\đồ án\LedQuaTang\Web.Core\obj\Debug\Web.Core.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Core\bin\Debug\Web.Core.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Core\bin\Debug\Web.Core.pdb
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Core\obj\Debug\Web.Core.dll
+C:\Users\Tin\Documents\LedQuaTang\LedQuaTang\Web.Core\obj\Debug\Web.Core.pdb
+E:\BearShop\Web.Core\bin\Debug\Web.Core.dll
+E:\BearShop\Web.Core\bin\Debug\Web.Core.pdb
+E:\BearShop\Web.Core\obj\Debug\Web.Core.dll
+E:\BearShop\Web.Core\obj\Debug\Web.Core.pdb
+E:\BearShop\Web.Core\obj\Debug\Web.Core.csprojResolveAssemblyReference.cache

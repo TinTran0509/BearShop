@@ -1,0 +1,34 @@
+﻿@{ 
+    Layout = null;
+    string dothtml = ".html";
+} 
+@model List<Web.Model.Category>
+<span class="widget-title "><span>Danh mục sản phẩm</span></span><div class="is-divider small"></div>
+<ul class="product-categories">
+@if (Model != null && Model.Count > 0)
+{
+    var lstParent = Model.Where(g => g.ParentID == 0).OrderBy(g => g.Ordering).ToList();
+    foreach (var level1 in lstParent)
+    {
+        var level2 = Model.Where(g => g.ParentID == level1.ID).ToList();
+        if (level2.Count > 0)
+        {
+            <li class="cat-item cat-item-26 cat-parent">
+                <a href="@level1.LinkSeo@dothtml">@level1.Name</a>
+                <ul class='children'>
+                    @foreach (var item in level2)
+                    {
+                        <li class="cat-item cat-item-28"><a href="@item.LinkSeo@dothtml">@item.Name</a></li>
+                    }
+                </ul>
+            </li>
+        }
+        else
+        {
+            <li class="cat-item cat-item-15"><a href="@level1.LinkSeo@dothtml">@level1.Name</a></li>
+        }
+    }
+} 
+</ul>
+
+    

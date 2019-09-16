@@ -1,0 +1,130 @@
+﻿@model Web.Models.Login
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login V4</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/scriptlogin/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/scriptlogin/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/scriptlogin/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/scriptlogin/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/scriptlogin/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/scriptlogin/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/scriptlogin/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/scriptlogin/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/scriptlogin/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/scriptlogin/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/scriptlogin/css/main.css">
+    <!--===============================================================================================-->
+   
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+               
+
+
+                @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "login100-form validate-form" }))
+                {
+                    <span class="login100-form-title p-b-49">
+                        Login
+                    </span>
+                    @Html.ValidationSummary(false, "")
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
+                        @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "label-input100" })
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.Username, new { @class = "input100", @autofocus = "autofocus" })
+                            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                            <span class="focus-input100" data-symbol="&#xf206;"></span>
+                        </div>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "label-input100" })
+                        <div class="form-group">
+                            @Html.PasswordFor(model => model.Password, new { @class = "input100" })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" type="submit">
+                                Login
+                            </button>
+                            
+
+                        </div>
+                    </div>
+                   
+                }
+                <div class="txt1 text-center p-t-54 p-b-20">
+                    <span>
+                        Or Sign Up Using
+                    </span>
+                </div>
+
+                <div class="flex-c-m">
+                    <a href="/scriptlogin/#" class="login100-social-item bg1">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+
+                    <a href="/scriptlogin/#" class="login100-social-item bg2">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+
+                    <a href="/scriptlogin/#" class="login100-social-item bg3">
+                        <i class="fa fa-google"></i>
+                    </a>
+                </div>
+
+                @*<div class="flex-col-c p-t-155">
+            <span class="txt1 p-b-17">
+                Or Sign Up Using
+            </span>
+
+            <a href="/scriptlogin/#" class="txt2">
+                Sign Up
+            </a>
+        </div>*@
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="/scriptlogin/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/scriptlogin/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/scriptlogin/vendor/bootstrap/js/popper.js"></script>
+    <script src="/scriptlogin/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/scriptlogin/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/scriptlogin/vendor/daterangepicker/moment.min.js"></script>
+    <script src="/scriptlogin/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="/scriptlogin/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="/scriptlogin/js/main.js"></script>
+
+</body>
+</html>

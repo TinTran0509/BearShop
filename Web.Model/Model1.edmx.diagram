@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c3324db13bcd4df6bba22a12be09c56a" Name="Diagram1">
+        <EntityTypeShape EntityType="BearShopModel.About" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BearShopModel.AdminMenu" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BearShopModel.AdvImag" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BearShopModel.Category" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BearShopModel.ChuyenCuaGau" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BearShopModel.Contact" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BearShopModel.Footer" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BearShopModel.GroupCusUser" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="BearShopModel.Header" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="BearShopModel.HomeMenu" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BearShopModel.InfoUseful" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="BearShopModel.Instruction" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="BearShopModel.Logo" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BearShopModel.News" Width="1.5" PointX="8.75" PointY="7.75" />
+        <EntityTypeShape EntityType="BearShopModel.OrderDetail" Width="1.5" PointX="4.75" PointY="9.75" />
+        <EntityTypeShape EntityType="BearShopModel.Partner" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BearShopModel.Policy" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="BearShopModel.Product" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="BearShopModel.Slide" Width="1.5" PointX="10.75" PointY="10.75" />
+        <EntityTypeShape EntityType="BearShopModel.tbl_CountAccess" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BearShopModel.tbl_FeedBack" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="BearShopModel.tbl_GalleryCategory" Width="1.5" PointX="2.75" PointY="12.75" />
+        <EntityTypeShape EntityType="BearShopModel.tbl_GroupUser" Width="1.5" PointX="12.75" PointY="3.75" />
+        <EntityTypeShape EntityType="BearShopModel.tbl_Logs" Width="1.5" PointX="4.75" PointY="12.75" />
+        <EntityTypeShape EntityType="BearShopModel.tbl_Order" Width="1.5" PointX="12.75" PointY="6.75" />
+        <EntityTypeShape EntityType="BearShopModel.tbl_SlideImages" Width="1.5" PointX="6.75" PointY="12.75" />
+        <EntityTypeShape EntityType="BearShopModel.User" Width="1.5" PointX="12.75" PointY="10.75" />
+        <EntityTypeShape EntityType="BearShopModel.UserAdmin" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BearShopModel.Video" Width="1.5" PointX="14.75" PointY="7.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

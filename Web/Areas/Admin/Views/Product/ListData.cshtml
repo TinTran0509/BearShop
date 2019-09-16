@@ -1,0 +1,71 @@
+﻿@model List<Web.Model.CustomModel.ProductModel>
+@using Web.Model.CustomModel
+    @{
+        var lstAction = (List<int>)HttpContext.Current.Session["Action"];
+        int page = (int)TempData["PAGE"];
+        if (page > 1)
+        {
+            page = page * 5;
+        }
+    }  
+<div class="col-xs-12">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th style="text-align:center">TT</th>
+                <th>Tên sản phẩm</th>
+                <th>Mã Sản phẩm</th>
+                <th>Hình ảnh</th>
+                <th>Danh mục</th>
+                <th>Giá NY</th>
+                <th>Giá KM</th>
+                <th>Trạng thái</th>
+                <th>Ngày tạo</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                string sale = string.Empty;
+                if(item.Sale != 0)
+                {
+                    sale = String.Format("{0:0,0}", item.Sale);
+                }
+                <tr>
+                    <td  style="text-align:center;width:50px">@page</td>
+                    <td>@item.Name</td>
+                    <td>@item.ProductCode</td>
+                    <td><img style="width:70px" src="@item.Images"/></td>
+                    <td>@item.CategoryName</td>
+                    <td>@String.Format("{0:0,0}", item.Price)</td>
+                    <td>@sale</td>
+                    <td>@(item.IsHot==true? "Sản phẩm bán chạy" : "")</td>
+                    <td>@string.Format("{0:dd/MM/yyyy}", item.CreatedDate)</td>
+                    <td style="width:120px">
+                        @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Add))
+                        {
+                            <a onclick="Product.handleAddImg(@item.ID)" class="btn btn-primary btn-bordered" title="Quản lý nhiều ảnh">
+                                <i class="fa fa-file-image-o"></i>
+                            </a>
+                        }
+                        @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Edit))
+                        {
+                            <a href="/Admin/Product/Edit/@item.ID" class="btn btn-primary btn-bordered"><i class="glyphicon glyphicon-pencil"></i></a>
+                        }
+                       @if (lstAction != null && lstAction.Contains((int)EnumHelper.Action.Delete))
+                       {
+                        <a style="margin-top:3px" href="#" class="btn btn-danger btn-bordered" onclick="Product.ondelete(@item.ID)">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                       }
+                        <a href="javascript:void(0)" class="btn btn-primary btn-bordered" onclick="Product.loadfrmDetail(@item.ID)" title="Xem chi tiết">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+                page++;
+            }
+        </tbody>
+    </table>
+</div>

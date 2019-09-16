@@ -1,0 +1,26 @@
+﻿@model Web.Model.News
+@{
+    TempData["PathName"] = "Tin tức";
+    Layout = "~/Views/Shared/_Layout3.cshtml";
+}
+<div class="large-9 col">
+    <section class="no-results not-found">
+        <header class="page-title"> <h1 class="page-title">Nothing Found</h1> </header>
+        <div class="page-content">
+            <p>It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.</p>
+            <form method="get" class="searchform" action="https://gausaigon.com/" role="search">
+                <div class="flex-row relative">
+                    <div class="flex-col flex-grow">
+                        <input type="search" class="search-field mb-0" name="s" value="" id="s" placeholder="Tìm kiếm&hellip;" />
+                    </div>
+                    <div class="flex-col">
+                        <button type="submit" class="ux-search-submit submit-button secondary button icon mb-0">
+                            <i class="icon-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="live-search-results text-left z-top"></div>
+            </form>
+        </div>
+    </section>
+</div>

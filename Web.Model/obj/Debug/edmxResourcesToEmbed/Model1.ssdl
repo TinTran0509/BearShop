@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BearShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="About">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LinkSeo" Type="varchar" MaxLength="255" />
+    <Property Name="MetaTitle" Type="nvarchar" MaxLength="255" />
+    <Property Name="Contents" Type="nvarchar(max)" />
+    <Property Name="Createddate" Type="datetime" />
+    <Property Name="Tags" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="AdminMenu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="ParentID" Type="int" Nullable="false" />
+    <Property Name="Url" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Ordering" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Icon" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="LangCode" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="AdvImag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="255" />
+    <Property Name="Image" Type="varchar" MaxLength="255" />
+    <Property Name="Link" Type="varchar" MaxLength="255" />
+    <Property Name="Position" Type="int" Nullable="false" />
+    <Property Name="Type" Type="int" />
+    <Property Name="TagetBlank" Type="bit" />
+    <Property Name="DisplayOrder" Type="int" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="LinkSeo" Type="varchar" MaxLength="255" />
+    <Property Name="ParentID" Type="int" Nullable="false" />
+    <Property Name="Level" Type="int" />
+    <Property Name="Ordering" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChuyenCuaGau">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MetaTitle" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="255" />
+    <Property Name="Desciption" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="Contents" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Tags" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Contents" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Footer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Contents" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="GroupCusUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameGroup" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Ordering" Type="int" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Header">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Contents" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HomeMenu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Link" Type="nvarchar" MaxLength="255" />
+    <Property Name="LinkSeo" Type="varchar" MaxLength="255" />
+    <Property Name="Icon" Type="nvarchar" MaxLength="255" />
+    <Property Name="ParentId" Type="int" Nullable="false" />
+    <Property Name="Level" Type="int" />
+    <Property Name="Ordering" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InfoUseful">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MetaTitle" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="LinkSeo" Type="varchar" MaxLength="250" />
+    <Property Name="Desciption" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="Contents" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Tags" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Instruction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="Contents" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Logo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="MetaTitle" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="255" />
+    <Property Name="Desciption" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="Contents" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Tags" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Partner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="250" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Policy">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LinkSeo" Type="varchar" MaxLength="255" />
+    <Property Name="MetaTitle" Type="nvarchar" MaxLength="255" />
+    <Property Name="Contents" Type="nvarchar(max)" />
+    <Property Name="Createddate" Type="datetime" />
+    <Property Name="Tags" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ProductCode" Type="varchar" MaxLength="50" />
+    <Property Name="Images" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ImageMore" Type="xml" />
+    <Property Name="Price" Type="float" />
+    <Property Name="Sale" Type="float" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="IsHot" Type="bit" />
+  </EntityType>
+  <EntityType Name="Slide">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="250" />
+    <Property Name="Image" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" />
+    <Property Name="Link" Type="nvarchar" MaxLength="250" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_CountAccess">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_FeedBack">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Title" Type="nvarchar" MaxLength="255" />
+    <Property Name="Contents" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_GalleryCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="LangCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="Active" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="Icon" Type="nvarchar(max)" />
+    <Property Name="IsHome" Type="bit" />
+    <Property Name="Ordering" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_GroupUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="ExpandNews" Type="bit" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="Permission" Type="varchar(max)" />
+    <Property Name="PermissionCatNews" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="tbl_Logs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreatedDate" Type="date" Nullable="false" />
+    <Property Name="Contents" Type="xml" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Order">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerAddress" Type="nvarchar" MaxLength="250" />
+    <Property Name="CustomerPhone" Type="varchar" MaxLength="20" />
+    <Property Name="CustomerEmail" Type="varchar" MaxLength="250" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_SlideImages">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" />
+    <Property Name="Images" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="PageElementId" Type="nvarchar" MaxLength="500" />
+    <Property Name="Url" Type="nvarchar" MaxLength="250" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Ordering" Type="int" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="250" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Gender" Type="tinyint" />
+    <Property Name="Photo" Type="nvarchar(max)" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="City" Type="nvarchar" MaxLength="250" />
+    <Property Name="District" Type="nvarchar" MaxLength="250" />
+    <Property Name="Country" Type="nvarchar" MaxLength="150" />
+    <Property Name="zip" Type="int" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="PasswordQuestion" Type="nvarchar" MaxLength="500" />
+    <Property Name="PasswordAnswer" Type="nvarchar" MaxLength="500" />
+    <Property Name="Telephone" Type="varchar" MaxLength="20" />
+    <Property Name="Phone" Type="varchar" MaxLength="20" />
+    <Property Name="DonviId" Type="int" Nullable="false" />
+    <Property Name="ChucVuId" Type="int" Nullable="false" />
+    <Property Name="UserType" Type="int" Nullable="false" />
+    <Property Name="TimeLogin" Type="datetime" />
+    <Property Name="IPLogin" Type="nvarchar" MaxLength="500" />
+    <Property Name="GroupUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="NoiBo" Type="tinyint" />
+    <Property Name="PageNoiBo" Type="nvarchar" MaxLength="250" />
+    <Property Name="isAdmin" Type="bit" Nullable="false" />
+    <Property Name="IsBanChapHanh" Type="bit" Nullable="false" />
+    <Property Name="IsShow" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserAdmin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Gender" Type="tinyint" />
+    <Property Name="Photo" Type="nvarchar(max)" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="City" Type="nvarchar" MaxLength="250" />
+    <Property Name="District" Type="nvarchar" MaxLength="250" />
+    <Property Name="Country" Type="nvarchar" MaxLength="150" />
+    <Property Name="zip" Type="int" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="PasswordQuestion" Type="nvarchar" MaxLength="500" />
+    <Property Name="PasswordAnswer" Type="nvarchar" MaxLength="500" />
+    <Property Name="Phone" Type="varchar" MaxLength="20" />
+    <Property Name="UserType" Type="int" Nullable="false" />
+    <Property Name="TimeLogin" Type="datetime" />
+    <Property Name="IPLogin" Type="nvarchar" MaxLength="500" />
+    <Property Name="GroupUserID" Type="nvarchar" MaxLength="250" />
+    <Property Name="PageElementID" Type="varchar" MaxLength="250" />
+    <Property Name="QuyTrinhXuatBanID" Type="varchar" MaxLength="250" />
+    <Property Name="isAdmin" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Video">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Url" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Images" Type="nvarchar" MaxLength="250" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Ordering" Type="int" />
+    <Property Name="IsShowPlay" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="BearShopModelStoreContainer">
+    <EntitySet Name="About" EntityType="Self.About" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdminMenu" EntityType="Self.AdminMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdvImag" EntityType="Self.AdvImag" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChuyenCuaGau" EntityType="Self.ChuyenCuaGau" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Footer" EntityType="Self.Footer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GroupCusUser" EntityType="Self.GroupCusUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Header" EntityType="Self.Header" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HomeMenu" EntityType="Self.HomeMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InfoUseful" EntityType="Self.InfoUseful" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Instruction" EntityType="Self.Instruction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Logo" EntityType="Self.Logo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Policy" EntityType="Self.Policy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Slide" EntityType="Self.Slide" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_CountAccess" EntityType="Self.tbl_CountAccess" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_FeedBack" EntityType="Self.tbl_FeedBack" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_GalleryCategory" EntityType="Self.tbl_GalleryCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_GroupUser" EntityType="Self.tbl_GroupUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Logs" EntityType="Self.tbl_Logs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Order" EntityType="Self.tbl_Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_SlideImages" EntityType="Self.tbl_SlideImages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserAdmin" EntityType="Self.UserAdmin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

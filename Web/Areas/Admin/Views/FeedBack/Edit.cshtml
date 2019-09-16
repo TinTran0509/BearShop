@@ -1,0 +1,116 @@
+﻿ 
+@model Web.Model.AdvImag
+@using (Ajax.BeginForm("Edit", "AdvImage", null,
+                                new AjaxOptions
+                                {
+                                    HttpMethod = "POST",
+                                    OnSuccess = "Adv_Image.onAddSuccess"
+                                },
+                                new { @id = "frmData", @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(x=>x.ID)
+    <div class="form-group">
+        <label class="control-label col-md-3">Tiêu đề</label>
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-3">Hình ảnh <span class="asterisk"> (*)</span></label>
+        <div class="col-md-8">
+            @{ Html.RenderAction("UploadImage", "UploadFile", new { controlName = "Image" });}
+            <img src="@Model.Image" style="width:60px" id="prevImages">
+            <span class="error" id="spImg"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-3">Link</label>
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.Link, new { @class = "form-control", @placeholder = "Nhập đường dẫn" })
+        </div>
+    </div>
+    @*<div class="form-group">
+        <label class="control-label col-md-3">Kiểu file</label>
+        <div class="col-md-8">
+            <select class="form-control" id="Type" name="Type">
+                <option value="1">Video</option>
+                <option value="2">Hình ảnh</option>
+            </select>
+        </div>
+    </div>*@
+    <div class="form-group">
+        <label class="control-label col-md-3">Vị trí</label>
+        <div class="col-md-8">
+            <select class="form-control" name="Position" id="Position">
+                <option value="1">Ảnh Banner</option>
+                <option value="2">Video trên</option>
+                <option value="3">Video dưới</option>
+                <option value="4">Ảnh cuối trang</option>
+                <option value="5">Tin tức</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-3">Sắp xếp <span class="asterisk"> (*)</span></label>
+        <div class="col-md-4 lockChar">
+            @Html.TextBoxFor(model => model.DisplayOrder, new { @class = "form-control", @placeholder = "Thứ tự hiển thị" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-3"></label>
+        <div class="col-md-9">
+            <div class="checkbox checkbox-primary">
+                <input id="TagetBlank" name="TagetBlank" type="checkbox" @((bool)Model.TagetBlank ? "checked" : "") value="true">
+                <label for="isNewTab">
+                    Tab mới
+                </label>
+            </div>
+            <div class="checkbox checkbox-primary">
+                <input id="Status" name="Status" type="checkbox" @(Model.Status ? "checked" : "") value="true">
+                <label for="isNewTab">
+                    Kích hoạt
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Cập nhật</button>
+        </div>
+    </div>
+                }
+
+<script>
+    function getLinkSeo() {
+        let name = $('#Name').val();
+        $('#LinkSeo').val(bodauTiengViet(name));
+    }
+    $(document).ready(function () {
+        $('.lockChar').on("keypress", function () {
+            return event.charCode >= 48 && event.charCode <= 57
+        })
+        $('#select2').select2();
+        $("#frmData").validate({
+            rules:
+            {
+                DisplayOrder:
+                {
+                    required: true
+                }
+            },
+            messages:
+            {
+                DisplayOrder:
+                {
+                    required: "Vui lòng nhập thứ tự"
+                }
+            },
+            highlight: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                jQuery(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+    })
+</script>
